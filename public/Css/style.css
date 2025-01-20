@@ -1,0 +1,258 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px;
+}
+:root {
+    --btn-color: red;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --info-color: #17a2b8;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --body-color: #212529;
+    --text-color: #333;
+    --link-color: #007bff;
+    --link-hover-color: #0056b3;
+    --link-hover-text-color: #fff;
+    --bg-color: #f8f9fa;
+    --border-color: #e3e3e3;
+    --border-radius: 0.25rem;
+    --transition: all 0.5s ease;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    padding: 20px 30px;
+    border-bottom: 1px solid #e3e3e3;
+}
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.navbar .menu {
+    display: flex;
+    align-items: center;
+}
+.navbar .menu li {
+    margin-right: 20px;
+}
+.navbar .menu li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+}
+.navbar .menu li a:hover {
+    color: var(--btn-color);
+}
+/* class footer row, col-md-3, list-unstyled,  */
+.footer {
+    margin-top: auto;
+    background-color: #f8f9fa;
+    padding: 20px 30px;
+    text-align: center;
+    border-top: 1px solid #e3e3e3;
+}
+.footer .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer .col-md-3 {
+    margin-right: 20px;
+}
+.footer .col-md-3 h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+.footer .col-md-3 ul {
+    padding: 0;
+}
+.footer .col-md-3 ul li {
+    margin-bottom: 10px;
+}
+.footer .col-md-3 ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+}
+.footer .col-md-3 ul li a:hover {
+    color: var(--btn-color);
+}
+
+/* css for a banner with info in the center of image */
+.banner {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.banner::after {
+    content: '';
+    background-image: url('https://hellotax.com/blog/wp-content/uploads/2019/09/Amazon-Product-Listing-1.jpg');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    filter: brightness(0.5);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -999;
+}
+.banner h1 {
+    font-size: 6rem;
+    font-weight: 700;
+    width: min(100%, 800px);
+    margin: 0 auto;
+    color: #050020;
+}
+.banner p {
+    font-size: 1.2rem;
+    color: #050020;
+    margin: 0 auto;
+    text-transform: capitalize;
+    font-weight: 500;
+    margin-bottom: 20px;
+    width: min(100%, 500px);
+}
+.banner a {
+    background-color: var(--btn-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    border: 2px solid var(--btn-color);
+    color: #ffffff;
+}
+.banner-info{
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+.banner a:hover {
+    background-color: transparent;
+    border: 2px solid var(--btn-color);
+    color: #fff;
+}
+/* button of outline */
+.banner a.outline {
+    background-color: transparent;
+    border: 2px solid var(--btn-color);
+}
+.banner a.outline:hover {
+    background-color: var(--btn-color);
+    color: #fff;
+}
+
+.cards {
+    padding-bottom: 20px;
+
+}
+.cards h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.cards .row {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.cards .row .card{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    gap: 20px;
+    cursor: pointer;
+}
+.card-body{
+    padding: 10px;
+}
+.cards .row .card:hover{
+    transform: scale(1.05);
+}
+.fdrr{
+    flex-direction: row-reverse !important;
+}
+.cards .row .card img{
+    width: 30%;
+    border-radius: 0 10px 0 10px;
+    transition: transform 0.5s; 
+}
+
+.cards .col-md-3 {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.cards .col-md-3 h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin: 20px 0;
+}
+.cards .col-md-3 p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+/* css for a button with a hover effect */
+.cards .col-md-3 a {
+    background-color: var(--btn-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+}
+.cards .col-md-3 a:hover {
+    background-color: transparent;
+    border: 2px solid var(--btn-color);
+    color: var(--btn-color);
+}
+/* button of outline */
+.cards .col-md-3 a.outline {
+    background-color: transparent;
+    border: 2px solid var(--btn-color);
+}
+.cards .col-md-3 a.outline:hover {
+    background-color: var(--btn-color);
+    color: #fff;
+}
