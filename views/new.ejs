@@ -1,2 +1,37 @@
 <!-- bilerplate -->
 <% layout("/boilerplate") %>
+
+<!-- content -->
+<h1 class="main-heading tac">Enter Details</h1>
+<form action="">
+  <div class="input-area">
+    <label for="title" class="form-label">Title</label>
+    <input required type="password" class="form-control" id="title" />
+  </div>
+  <div class="input-area">
+    <label for="Description" class="form-label">Description</label>
+    <texta requiredrea type="password" class="form-control" id="Description"></texta>
+  </div>
+  <div class="input-area f jcsb">
+    <div class="input-area f6">
+      <label for="Location" class="form-label">Location</label>
+      <input required type="password" class="form-control" id="Location" />
+    </div>
+    <div class="input-area f3">
+      <label for="Country" class="form-label">Country</label>
+      <input required type="password" class="form-control" id="Country" />
+    </div>
+  </div>
+  <div class="input-area">
+    <label for="ImageUrl" class="form-label">Image Url</label>
+    <input required
+      type="password"
+      class="form-control"
+      name="image[url]"
+      id="ImageUrl"
+    />
+  </div>
+  <div class="input-area">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>

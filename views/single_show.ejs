@@ -1,0 +1,18 @@
+<%- layout("boilerplate") %>
+
+
+<div class="wrapper">
+    <!--  -->
+    <div class="row f jcsb">
+        <div class="img f5">
+            <img src="<%= listing.image.url %>" alt="image">
+        </div>
+        <div class="info f5 p1r f fdc">
+            <h1 class="heading"> <%= listing.title %></h1>
+            <p class="price">Price:  <div class="box">Rs. <%= listing.price.toLocaleString("ur-PK") %></div></p>
+            <p class="location">Location:  <div class="box"> <%= listing.location %></div></p>
+            <p class="country">Country:  <div class="box"> <%= listing.country %></div></p>
+            <p class="description">Description:  <div class="box"> <%= listing.description %></div></p>
+        </div>
+    </div>
+</div>
