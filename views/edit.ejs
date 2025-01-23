@@ -2,13 +2,14 @@
 <% layout("/boilerplate") %>
 
 <!-- content -->
-<h1 class="main-heading tac">Listing Details</h1>
-<form action="/listings/new" id="NewForm" method="post">
+<h1 class="main-heading tac">Edit Details</h1>
+<form action="/listings/<%= listing._id %>/edit?_method=PUT" id="NewForm" method="post">
   <div class="input-area">
     <label for="title" class="form-label">Title</label>
     <input
       autocomplete="on"
       name="title"
+      value="<%= listing.title %>"
       type="text"
       class="form-control title"
       id="title"
@@ -22,7 +23,9 @@
       type="text"
       class="form-control description"
       id="Description"
-    ></textarea>
+    >
+<%= listing.description %></textarea
+    >
     <h4 class="errmsg dn">Description is required</h4>
   </div>
   <div class="input-area f jcsb">
@@ -31,6 +34,7 @@
       <input
         name="country"
         type="text"
+        value="<%= listing.country %>"
         value="Pakistan"
         class="form-control country"
         id="Country"
@@ -43,13 +47,20 @@
         name="location"
         type="text"
         class="form-control location"
+        value="<%= listing.location %>"
         id="Location"
       />
       <h4 class="errmsg dn">Location is required</h4>
     </div>
     <div class="input-area f3">
       <label for="Price" class="form-label">Price</label>
-      <input name="price" type="number" class="form-control price" id="Price" />
+      <input
+        name="price"
+        type="number"
+        value="<%= listing.price %>"
+        class="form-control price"
+        id="Price"
+      />
       <h4 class="errmsg dn">Price is required</h4>
     </div>
   </div>
@@ -59,11 +70,13 @@
       type="text"
       class="form-control img"
       name="image[url]"
+      value="<%= listing.image.url %>"
+      disabled
       id="ImageUrl"
     />
     <h4 class="errmsg dn">Enter Valid Url</h4>
   </div>
   <div class="input-area">
-    <input type="submit" value="submit" class="Newsubmit" />
+    <input type="submit" value="Update" class="Newsubmit" />
   </div>
 </form>

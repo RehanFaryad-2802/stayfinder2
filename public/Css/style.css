@@ -1,7 +1,7 @@
 :root {
   --btn-color: red;
-  --container-size: 1200px;
-  --info-color: #17a2b8;
+  --container-size: 1300px;
+  --f3: 0 0 calc(33.335% - 20px);
   --warning-color: #ffc107;
   --danger-color: #dc3545;
   --light-color: #f8f9fa;
@@ -276,11 +276,6 @@ img {
   aspect-ratio: 12/13;
   object-fit: cover;
 }
-.box {
-  padding: 5px 10px;
-  background-color: #212529;
-  color: #f8f9fa;
-}
 .wrapper .info p {
   color: #333;
   padding: 5px;
@@ -318,7 +313,7 @@ img {
 
 /* all bootstrap form css */
 
-form {
+form#NewForm {
   width: min(90%, 500px);
   margin: 1rem auto;
   background-color: #ffffff;
@@ -342,7 +337,7 @@ form input {
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.dn{
+.dn {
   display: none;
 }
 .errmsg {
@@ -350,7 +345,7 @@ form input {
   font-size: 0.8rem;
   font-weight: 400;
   margin-top: 5px;
-} 
+}
 form input:focus {
   border-color: #007bff;
   outline: 0;
@@ -407,4 +402,48 @@ form input[type="submit"] {
 .invalid {
   border: #dc3545 1px solid !important;
   box-shadow: 0 0 0 0.2rem #dc384840 !important;
+}
+.gapr10 {
+  row-gap: 10px;
+}
+
+/*  */
+
+.info {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.price,
+.location,
+.country,
+.description {
+  margin: 2px 0;
+}
+.gapc10 {
+  column-gap: 20px;
+}
+.box {
+  display: block;
+  padding: 5px 10px;
+  background-color: #151515;
+  color: #f8f9fa;
+}
+.delete,
+.edit {
+  font-size: medium;
+  background-color: transparent;
+  text-decoration: underline;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.edit {
+  color: #007bff;
+}
+.delete {
+  color: #dc3545;
 }
