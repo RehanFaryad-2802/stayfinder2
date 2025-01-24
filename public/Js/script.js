@@ -16,26 +16,15 @@ let data = () => {
   return allFieldsValid;
 };
 try {
-let form = document.querySelector("#NewForm");
-form.addEventListener("submit", (e) => {
-  if (!data()) {
-    e.preventDefault();
-  }
-});
+  let form = document.querySelector("#NewForm");
+  form.addEventListener("submit", (e) => {
+    if (!data()) {
+      e.preventDefault();
+    }
+  });
 } catch (error) {}
 try {
-  document.querySelectorAll("input").forEach((element) => {
-    element.addEventListener("keyup", (e) => {
-      let f = e.target.value;
-      if (f == "") {
-        e.target.classList.add("invalid");
-      } else {
-        e.target.classList.remove("invalid");
-        element.nextElementSibling.style.display = "none";
-      }
-    });
-  });
-  document.querySelectorAll("textarea").forEach((element) => {
+  document.querySelectorAll(".form-control").forEach((element) => {
     element.addEventListener("keyup", (e) => {
       let f = e.target.value;
       if (f == "") {

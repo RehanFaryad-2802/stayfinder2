@@ -1,5 +1,28 @@
 <!-- bilerplate -->
 <% layout("/boilerplate") %>
+<datalist id="titles">
+  <option value="Hidden Oasis in the Maldives"></option>
+  <option value="Tranquil Villa on the Amalfi Coast"></option>
+  <option value="Secluded Cabin in the Rockies"></option>
+  <option value="Serene Cottage by the Lake"></option>
+  <option value="Private Retreat in Bali"></option>
+  <option value="Cozy Chalet in the Swiss Alps"></option>
+</datalist>
+
+<datalist id="locations">
+  <option value="Central Park, New York City, USA"></option>
+  <option value="Westminster Abbey, London, United Kingdom"></option>
+  <option value="Grand Canyon National Park, Arizona, USA"></option>
+  <option value="Great Barrier Reef, Queensland, Australia"></option>
+  <option value="Mount Fuji, Honshu Island, Japan"></option>
+</datalist>
+<datalist id="countries">
+  <option value="USA">
+  <option value="UK">
+  <option value="China">
+  <option value="Pakistan">
+  <option value="Mexico">
+</datalist>
 
 <!-- content -->
 <h1 class="main-heading tac">Listing Details</h1>
@@ -7,6 +30,7 @@
   <div class="input-area">
     <label for="title" class="form-label">Title</label>
     <input
+      list="titles"
       autocomplete="on"
       name="title"
       type="text"
@@ -19,18 +43,34 @@
     <label for="Description" class="form-label">Description</label>
     <textarea
       name="description"
+      autocomplete="on"
       type="text"
       class="form-control description"
+      rows="7"
       id="Description"
     ></textarea>
     <h4 class="errmsg dn">Description is required</h4>
   </div>
+  <div class="input-area">
+    <label for="ImageUrl" class="form-label">Image Url</label>
+    <input
+      type="text"
+      autocomplete="on"
+      class="form-control img"
+      name="image[url]"
+      id="ImageUrl"
+    />
+    <h4 class="errmsg dn">Enter Valid Url</h4>
+  </div>
+
   <div class="input-area f jcsb">
     <div class="input-area f3">
       <label for="Country" class="form-label">Country</label>
       <input
+        autocomplete="on"
         name="country"
         type="text"
+        list="countries"
         value="Pakistan"
         class="form-control country"
         id="Country"
@@ -41,6 +81,8 @@
       <label for="Location" class="form-label">Location</label>
       <input
         name="location"
+        list="locations"
+        autocomplete="on"
         type="text"
         class="form-control location"
         id="Location"
@@ -52,16 +94,6 @@
       <input name="price" type="number" class="form-control price" id="Price" />
       <h4 class="errmsg dn">Price is required</h4>
     </div>
-  </div>
-  <div class="input-area">
-    <label for="ImageUrl" class="form-label">Image Url</label>
-    <input
-      type="text"
-      class="form-control img"
-      name="image[url]"
-      id="ImageUrl"
-    />
-    <h4 class="errmsg dn">Enter Valid Url</h4>
   </div>
   <div class="input-area">
     <input type="submit" value="submit" class="Newsubmit" />

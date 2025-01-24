@@ -16,6 +16,27 @@
   --border-radius: 0.25rem;
   --transition: all 0.5s ease;
 }
+datalist option {
+  height: 20px; /* Adjust this as needed */
+}
+datalist {
+  max-height: 100px; /* This sets the visible height */
+  overflow-y: auto; /* Enables vertical scrolling */
+}
+/* Remove the arrow for the datalist */
+input::-webkit-calendar-picker-indicator {
+  display: none !important; /* Hides the dropdown arrow in Chrome, Edge, etc. */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* For browsers that use appearance for controls */
+input {
+  -webkit-appearance: none; /* Hides the default dropdown */
+  appearance: none;
+}
+
+.card-box{overflow: hidden;}
 body {
   font-family: "Poppins", sans-serif;
   display: flex;
@@ -431,6 +452,9 @@ form input[type="submit"] {
   background-color: #151515;
   color: #f8f9fa;
 }
+.cus-pad {
+  padding: 20px;
+}
 .delete,
 .edit {
   font-size: medium;
@@ -446,4 +470,109 @@ form input[type="submit"] {
 }
 .delete {
   color: #dc3545;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #e3e3e3;
+  resize: vertical;
+}
+
+/* Error page */
+/* 
+<div class="error-container">
+  <h1 class="error-heading">404</h1>
+  <h2 class="error-subheading">Page Not Found</h2>
+  <p class="error-text">
+    The page you are looking for might have been removed, had its name changed,
+    or is temporarily unavailable.
+  </p>
+  <a href="/" class="error-link">Go to Homepage</a>
+</div>
+
+*/
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  text-align: center;
+}
+.error-heading {
+  font-size: 10rem;
+  font-weight: 700;
+  color: var(--danger-color);
+}
+.error-subheading {
+  font-size: 2rem;
+  max-width: 600px;
+  font-weight: 600;
+  color: #333;
+  margin: 10px 0;
+}
+.error-text {
+  font-size: 1rem;
+  color: #666;
+  margin: 10px 0;
+}
+.error-link {
+  background-color: var(--btn-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  border: 2px solid var(--btn-color);
+  color: #ffffff;
+}
+.error-link:hover {
+  background-color: transparent;
+  border: 2px solid var(--btn-color);
+  color: var(--btn-color);
+}
+/* <div class="error-message">
+    <h1>Something went wrong</h1>
+    <p>We are sorry, but an unexpected error has occurred. Please try again later.</p>
+    <a href="/" class="btn btn-primary">Go to Homepage</a>
+</div> */
+
+.error-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  text-align: center;
+}
+.error-message h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--danger-color);
+  margin-bottom: 20px;
+}
+.error-message p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+.error-message a {
+  background-color: var(--btn-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  border: 2px solid var(--btn-color);
+  color: #ffffff;
+}
+.error-message a:hover {
+  background-color: transparent;
+  border: 2px solid var(--btn-color);
+  color: var(--btn-color);
 }

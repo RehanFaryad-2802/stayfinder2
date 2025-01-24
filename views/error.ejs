@@ -1,0 +1,12 @@
+<%- layout("boilerplate") %>
+
+
+<!-- 404 error container -->
+<div class="error-container">
+  <h1 class="error-heading"><%= statusCode%></h1>
+  <h2 class="error-subheading"><%= message%></h2>
+  <p class="error-text">
+    We're sorry, but there seems to be an issue. Please try again later or contact support if the problem persists.
+  </p>
+  <a href="/" class="error-link">Go to Homepage</a>
+</div>
