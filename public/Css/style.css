@@ -2,7 +2,7 @@
   --btn-color: red;
   --container-size: 1300px;
   --f3: 0 0 calc(33.335% - 20px);
-  --warning-color: #ffc107;
+  --sh: 1.2rem;
   --danger-color: #dc3545;
   --light-color: #f8f9fa;
   --dark-color: #343a40;
@@ -229,9 +229,6 @@ body {
   aspect-ratio: 1.5/1;
   object-fit: cover;
 }
-img {
-  width: 100%;
-}
 .card-body {
   padding: 10px;
   flex: 0 0 70%;
@@ -282,7 +279,7 @@ img {
   padding: 20px 0;
 }
 .wrapper {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   width: 100%;
   padding: 10px;
@@ -312,13 +309,14 @@ img {
 .all-listings {
   row-gap: 20px;
 }
-.card-box p {
-  /* fitting content in two lines only */
+p.two-line {
   display: -webkit-box;
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  padding: 0 !important;
+  
 }
 .card-box :where(h3, p) {
   margin: 10px 0;
@@ -575,4 +573,26 @@ textarea {
   background-color: transparent;
   border: 2px solid var(--btn-color);
   color: var(--btn-color);
+}
+.f25{
+  flex: 0 0 calc(25% - 15px);
+}
+
+.grow{
+  transition: scale .3s ease-in-out;
+}
+.grow:hover{
+  scale: 1.03;
+}
+
+
+
+
+
+
+.cards-box .card{
+  background-color: #fff;
+}
+.cards-box .content{
+  padding: 20px 10px;
 }

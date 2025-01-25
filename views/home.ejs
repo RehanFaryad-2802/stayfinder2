@@ -28,12 +28,35 @@
           </div>
           <div class="card-body">
             <h3><%= listings[i].title %></h3>
-            <p>
+            <p class="two-line">
               <%= listings[i].description %>
             </p>
           </div>
         </a>
       </div>
       <%} %>
+  </div>
+</div>
+
+
+
+<div class="cards-box container">
+  <h1>Featured Listings</h1>
+  <div class="f gapc10 nowrap">
+    <% for (let i = 2; i < 6; i++) { %>
+      <div class="f25">
+        <a href="/listings/<%= listings[i]._id %>" class="card">
+        <div class="card grow">
+          <div class="img">
+            <img src="<%= listings[i].image.url %>" alt="image" />
+          </div>
+          <div class="content">
+            <h4 class="sub-heading"><%= listings[i].title %></h4>
+            <p class="two-line st stc mt10"><%= listings[i].description %></p>
+          </div>
+        </div>
+        </a>
+      </div>
+    <% } %>
   </div>
 </div>
