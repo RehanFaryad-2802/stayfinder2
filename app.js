@@ -4,12 +4,14 @@ const path = require("path");
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
+const Joi = require("joi");
 const app = express();
 
 // my data
 const Listing = require("./models/listing.js");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressErrors.js");
+const { listingSchema } = require("./schema.js");
 
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
@@ -29,6 +31,14 @@ async function main() {
   await mongoose.connect(MONGO_URL);
 }
 
+let validateListing = (req, res, next) => {
+  let {error} = listingSchema.validate(req.body);
+  if (error) {
+    throw new ExpressError(400, error);
+  } else {
+    next();
+  }
+};
 // home route
 app.get(
   "/",
@@ -55,10 +65,9 @@ app.get("/listings/new", (req, res) => {
 // Creating new listing
 app.post(
   "/listings/new",
+  validateListing,
   wrapAsync(async (req, res) => {
     let data = req.body;
-    console.log(req.body);
-
     await Listing.insertMany(data);
     res.redirect("/listings");
   })
@@ -97,6 +106,7 @@ app.get(
 // Updating a listing
 app.put(
   "/listings/:id/edit",
+  validateListing,
   wrapAsync(async (req, res, next) => {
     let { id } = req.params;
     let data = req.body;

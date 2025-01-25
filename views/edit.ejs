@@ -3,7 +3,11 @@
 
 <!-- content -->
 <h1 class="main-heading tac">Edit Details</h1>
-<form action="/listings/<%= listing._id %>/edit?_method=PUT" id="NewForm" method="post">
+<form
+  action="/listings/<%= listing._id %>/edit?_method=PUT"
+  id="NewForm"
+  method="post"
+>
   <div class="input-area">
     <label for="title" class="form-label">Title</label>
     <input
@@ -19,15 +23,26 @@
   <div class="input-area">
     <label for="Description" class="form-label">Description</label>
     <textarea
-    rows="9"
+      rows="9"
       name="description"
       type="text"
       class="form-control description"
       id="Description"
     >
-<%= listing.description %></textarea
+    <%= listing.description %></textarea
     >
     <h4 class="errmsg dn">Description is required</h4>
+  </div>
+  <div class="input-area">
+    <label for="ImageUrl" class="form-label">Image Url</label>
+    <input
+      type="text"
+      class="form-control img"
+      name="image[url]"
+      value="<%= listing.image.url %>"
+      id="ImageUrl"
+    />
+    <h4 class="errmsg dn">Enter Valid Url</h4>
   </div>
   <div class="input-area f jcsb">
     <div class="input-area f3">
@@ -64,18 +79,6 @@
       />
       <h4 class="errmsg dn">Price is required</h4>
     </div>
-  </div>
-  <div class="input-area">
-    <label for="ImageUrl" class="form-label">Image Url</label>
-    <input
-      type="text"
-      class="form-control img"
-      name="image[url]"
-      value="<%= listing.image.url %>"
-      disabled
-      id="ImageUrl"
-    />
-    <h4 class="errmsg dn">Enter Valid Url</h4>
   </div>
   <div class="input-area">
     <input type="submit" value="Update" class="Newsubmit" />
