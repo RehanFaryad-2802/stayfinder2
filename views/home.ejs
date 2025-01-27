@@ -8,7 +8,7 @@
         Lorem ipsum dolor amet consectetur. Lorem ipsum dolor sit amet
         consectetur adipisicing elit.
       </p>
-      <div class="btn">
+      <div>
         <a href="/listings">View Listings</a>
         <a class="outline" href="/listings/new">Create Listing</a>
       </div>
@@ -17,8 +17,8 @@
 </div>
 
 <div class="cards container">
-  <h1>Most Populer Listings</h1>
-  <div class="row">
+  <h1 class="main-heading">Most Populer Listings</h1>
+  <div class="row grow">
     <!--  -->
     <% for (let i = 5; i <= 8; i++) { %> 
       <div class="col-md-3">
@@ -41,12 +41,12 @@
 
 
 <div class="cards-box container">
-  <h1>Featured Listings</h1>
-  <div class="f gapc10 nowrap">
+  <h1 class="main-heading tac">Featured Listings</h1>
+  <div class="f gapc10 grow-blur nowrap">
     <% for (let i = 2; i < 6; i++) { %>
       <div class="f25">
         <a href="/listings/<%= listings[i]._id %>" class="card">
-        <div class="card grow">
+        <div class="card">
           <div class="img">
             <img src="<%= listings[i].image.url %>" alt="image" />
           </div>

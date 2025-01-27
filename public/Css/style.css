@@ -1,6 +1,6 @@
 :root {
   --btn-color: red;
-  --container-size: 1300px;
+  --container-size: 1200px;
   --f3: 0 0 calc(33.335% - 20px);
   --sh: 1.2rem;
   --danger-color: #dc3545;
@@ -318,6 +318,15 @@ p.two-line {
   padding: 0 !important;
   
 }
+p.one-line {
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding: 0 !important;
+  
+}
 .card-box :where(h3, p) {
   margin: 10px 0;
   padding: 0;
@@ -577,16 +586,38 @@ textarea {
 .f25{
   flex: 0 0 calc(25% - 15px);
 }
-
-.grow{
-  transition: scale .3s ease-in-out;
+.wraper{
+  width: 100%;
+  background-color: white;
 }
-.grow:hover{
-  scale: 1.03;
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  background-color: var(--btn-color);
+  border: 2px solid var(--btn-color);
+  transition: background-color 0.3s, color 0.3s;
 }
 
+.btn:hover {
+  background-color: transparent;
+  color: var(--btn-color);
+}
 
+button.btn {
+  border: none;
+  cursor: pointer;
+}
 
+button.btn:hover {
+  background-color: transparent;
+  color: var(--btn-color);
+}
 
 
 
@@ -595,4 +626,32 @@ textarea {
 }
 .cards-box .content{
   padding: 20px 10px;
+}
+.avature{
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+
+
+
+.Showreview {
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+.name h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.comment p {
+  font-size: 1rem;
+  color: #666;
+  margin: 10px 0 0;
 }

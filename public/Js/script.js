@@ -1,7 +1,6 @@
 let data = () => {
   let inputs = document.querySelectorAll(".form-control");
-  let allFieldsValid = true; //
-
+  let allFieldsValid = true; 
   for (let element of inputs) {
     if (element.value === "") {
       let nextElement = element.nextElementSibling;
@@ -18,6 +17,7 @@ let data = () => {
 try {
   let form = document.querySelector("#NewForm");
   form.addEventListener("submit", (e) => {
+    data()
     if (!data()) {
       e.preventDefault();
     }

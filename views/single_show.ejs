@@ -1,14 +1,13 @@
 <%- layout("boilerplate") %>
-<div class="wrapper">
+<div class="wrapper f fdc">
   <div class="row f jcsb">
-    <div class="img f5">
+    <div class="img grow-blur pointer f5">
       <img src="<%= listing.image.url %>" alt="image" />
     </div>
     <div class="info f5 p1r f fdc">
       <h1 class="heading"><%= listing.title %></h1>
       <p class="price">
-        <b>Price:</b>
-        <span class="box">Rs. <%= listing.price %></span>
+        <b>Price:</b> <span class="box">Rs. <%= listing.price %></span>
       </p>
       <p class="location">
         <b>Location:</b> <span class="box"><%= listing.location %></span>
@@ -16,21 +15,82 @@
       <p class="country">
         <b>Country:</b> <span class="box"><%= listing.country %></span>
       </p>
-
       <div class="f aic">
         <form
           action="/listings/<%= listing._id %>?_method=DELETE"
           method="post"
         >
-          <button class="btn delete">Delete</button>
+          <button class="delete">Delete</button>
         </form>
-        <a href="/listings/<%= listing._id %>/edit" class="btn edit">Edit</a>
+        <a href="/listings/<%= listing._id %>/edit" class="edit">Edit</a>
       </div>
     </div>
     <div class="descrip-box f10">
-      <p class="description">
-       <b> Description:</b> <div class="box cus-pad"><%= listing.description %></div>
-      </p>
+      <p class="comment mt"><b>comment:</b></p>
+      <div class="box cus-pad mt20"><%= listing.comment %></div>
     </div>
   </div>
+</div>
+<div class="container">
+  <h1 class="main-heading">People Reviews</h1>
+  <div class="allReviews f">
+    <% for (let i = listing.reviews.length - 1; i >= 0; i--) { %>
+    <div class="f cg20 aic f10 Showreview">
+      <div class="f1">
+        <div class="avature">
+          <img
+            class="br100p"
+            src="https://i.pravatar.cc/<%= i + 1 %>00"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="f9">
+        <div class="name">
+          <h4>Asembler</h4>
+        </div>
+        <div class="comment">
+          <p class="one-line"><%= listing.reviews[i].comment %></p>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <!--  -->
+  <h1 class="heading">Leave a comment</h1>
+  <form action="/listings/<%= listing._id %>/review" id="NewForm" method="post">
+    <div class="f">
+      <label for="rating">Rating:</label>
+      <input
+        type="range"
+        min="1"
+        max="5"
+        required
+        name="rating"
+        id="rating"
+        class="form-control"
+      />
+      <h4 class="errmsg dn">comment is required</h4>
+    </div>
+    <div class="input-area">
+      <label for="comment" class="form-label">comment</label>
+      <textarea
+        name="comment"
+        autocomplete="on"
+        type="text"
+        class="form-control comment"
+        rows="7"
+        id="comment"
+      ></textarea>
+      <h4 class="errmsg dn">comment is required</h4>
+    </div>
+    <input type="submit" value="submit" class="Newsubmit" />
+  </form>
 </div>
