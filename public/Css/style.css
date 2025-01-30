@@ -3,7 +3,7 @@
 @import url("./Form.css");
 @import url("./media.css");
 :root {
-  --btn-color: red;
+  --btn-color: #00a8fc;
   --container-size: 1300px;
   --f3: 0 0 calc(33.335% - 20px);
   --sh: 1.2rem;
