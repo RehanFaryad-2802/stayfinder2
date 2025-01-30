@@ -1,10 +1,10 @@
 <%- layout("boilerplate") %>
 <div class="wrapper f fdc">
-  <div class="row f jcsb">
-    <div class="img grow-blur pointer f5">
+  <div class="row f col-4 jcsb">
+    <div class="img grow-blur pointer f0">
       <img src="<%= listing.image.url %>" alt="image" />
     </div>
-    <div class="info f5 p1r f fdc">
+    <div class="f0 p1r f rg30 fdc">
       <h1 class="heading"><%= listing.title %></h1>
       <p class="price">
         <b>Price:</b> <span class="box">Rs. <%= listing.price %></span>
@@ -20,19 +20,23 @@
           action="/listings/<%= listing._id %>?_method=DELETE"
           method="post"
         >
-          <button class="delete">Delete</button>
+          <div class="shake">
+            <button class="delete">Delete</button>
+          </div>
         </form>
         <a href="/listings/<%= listing._id %>/edit" class="edit">Edit</a>
       </div>
     </div>
-    <div class="descrip-box f10">
-      <p class="comment mt"><b>comment:</b></p>
-      <div class="box cus-pad mt20"><%= listing.comment %></div>
-    </div>
+  </div>
+  <div class="descrip-box f10">
+    <p class="comment mt"><b>Description:</b></p>
+    <div class="box cus-pad mt20"><%= listing.description %></div>
   </div>
 </div>
 <div class="container">
-  <h1 class="main-heading">People Reviews</h1>
+  <!--  -->
+  <% if(listing.reviews.length != 0){ %>
+  <h1 class="heading1">People Reviews</h1>
   <div class="allReviews f">
     <% for (let i = listing.reviews.length - 1; i >= 0; i--) { %>
     <div class="f pointer cg20 aic f10 Showreview">
@@ -47,18 +51,21 @@
       </div>
       <div class="f9">
         <div class="name">
-          <h4>Asembler </h4>
+          <h4>Asembler</h4>
         </div>
         <div class="comment">
           <p class="one-line"><%= listing.reviews[i].comment %></p>
           <span class="green"> Rating : <%= listing.reviews[i].rating %></span>
         </div>
-        <form method="post" action="/listings/<%= listing.id%>/review/<%= listing.reviews[i]._id%>?_method=DELETE">
+        <form
+          method="post"
+          action="/listings/<%= listing.id%>/review/<%= listing.reviews[i]._id%>?_method=DELETE"
+        >
           <button class="delete">Delete</button>
         </form>
       </div>
     </div>
-    <% } %>
+    <% } } %>
   </div>
   <!--  -->
   <!--  -->
@@ -68,10 +75,12 @@
   <!--  -->
   <!--  -->
   <!--  -->
-  <h1 class="heading">Leave a comment</h1>
+  <h1 class="heading1">Leave a comment</h1>
   <form action="/listings/<%= listing._id %>/review" id="NewForm" method="post">
-    <div class="f">
-      <label for="rating">Rating:</label>
+    <div class="f fdc">
+      <label for="rating" class="f4"
+        >Rating: (<span class="rating green">3</span>)</label
+      >
       <input
         type="range"
         min="1"
@@ -79,9 +88,8 @@
         required
         name="rating"
         id="rating"
-        class="form-control"
+        class="form-control f5"
       />
-      <h4 class="errmsg dn">comment is required</h4>
     </div>
     <div class="input-area">
       <label for="comment" class="form-label">comment</label>

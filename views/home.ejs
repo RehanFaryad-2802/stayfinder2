@@ -1,10 +1,11 @@
 <% layout("boilerplate") %>
 <!-- banner -->
-<div class="banner">
-  <div class="container">
+<div class="banner container flex">
+  <div class="f10">
+    <div class="spacer4"></div>
     <div class="banner-info">
-      <h1 style="color: #fff;">WELCOME TO OUR WEBSITE</h1>
-      <p>
+      <h1 class="wtc">WELCOME TO OUR WEBSITE</h1>
+      <p class="wtc">
         Lorem ipsum dolor amet consectetur. Lorem ipsum dolor sit amet
         consectetur adipisicing elit.
       </p>
@@ -13,11 +14,12 @@
         <a class="outline" href="/listings/new">Create Listing</a>
       </div>
     </div>
+    <div class="spacer4"></div>
   </div>
 </div>
 
 <div class="cards container">
-  <h1 class="main-heading">Most Populer Listings</h1>
+  <h1 class="heading1">Most Populer Listings</h1>
   <div class="row grow">
     <!--  -->
     <% for (let i = 5; i <= 8; i++) { %> 
@@ -41,10 +43,10 @@
 
 
 <div class="cards-box container">
-  <h1 class="main-heading tac">Featured Listings</h1>
-  <div class="f gapc10 grow-blur nowrap">
+  <h1 class="heading1">Featured Listings</h1>
+  <div class="f gapc10 col-4 grow">
     <% for (let i = 2; i < 6; i++) { %>
-      <div class="f25">
+      <div class="f0">
         <a href="/listings/<%= listings[i]._id %>" class="card">
         <div class="card">
           <div class="img">

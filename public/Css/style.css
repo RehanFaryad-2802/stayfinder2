@@ -1,6 +1,10 @@
+@import url("./navbarFooter.css");
+@import url("./bannerCards.css");
+@import url("./Form.css");
+@import url("./media.css");
 :root {
   --btn-color: red;
-  --container-size: 1200px;
+  --container-size: 1300px;
   --f3: 0 0 calc(33.335% - 20px);
   --sh: 1.2rem;
   --danger-color: #dc3545;
@@ -16,30 +20,11 @@
   --border-radius: 0.25rem;
   --transition: all 0.5s ease;
 }
-datalist option {
-  height: 20px; /* Adjust this as needed */
-}
-datalist {
-  max-height: 100px; /* This sets the visible height */
-  overflow-y: auto; /* Enables vertical scrolling */
-}
-.green{
+
+.green {
   color: green;
 }
-/* Remove the arrow for the datalist */
-input::-webkit-calendar-picker-indicator {
-  display: none !important; /* Hides the dropdown arrow in Chrome, Edge, etc. */
-  -webkit-appearance: none;
-  appearance: none;
-}
 
-/* For browsers that use appearance for controls */
-input {
-  -webkit-appearance: none; /* Hides the default dropdown */
-  appearance: none;
-}
-
-.card-box{overflow: hidden;}
 body {
   font-family: "Poppins", sans-serif;
   display: flex;
@@ -47,404 +32,8 @@ body {
   min-height: 100vh;
 }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #f8f9fa;
-  padding: 20px 30px;
-  border-bottom: 1px solid #e3e3e3;
-}
-.navbar .logo {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #333;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-.navbar .menu {
-  display: flex;
-  align-items: center;
-}
-.navbar .menu li {
-  margin-right: 20px;
-}
-.navbar .menu li a {
-  color: #333;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: "Poppins", sans-serif;
-}
-.navbar .menu li a:hover {
-  color: var(--btn-color);
-}
-/* class footer row, col-md-3, list-unstyled,  */
-.footer {
-  margin-top: auto;
-  background-color: #f8f9fa;
-  width: 100%;
-  padding: 20px 30px;
-  text-align: center;
-  border-top: 1px solid #e3e3e3;
-}
-.footer .row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.footer .col-md-3 {
-  margin-right: 20px;
-}
-.footer .col-md-3 h4 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 10px;
-}
-.footer .col-md-3 ul {
-  padding: 0;
-}
-.footer .col-md-3 ul li {
-  margin-bottom: 10px;
-}
-.footer .col-md-3 ul li a {
-  color: #333;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: "Poppins", sans-serif;
-}
-.footer .col-md-3 ul li a:hover {
-  color: var(--btn-color);
-}
-
-/* css for a banner with info in the center of image */
-.banner {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-.banner::after {
-  content: "";
-  background-image: url("https://hellotax.com/blog/wp-content/uploads/2019/09/Amazon-Product-Listing-1.jpg");
-  background-size: cover;
-  background-position: center;
-  position: absolute;
-  filter: brightness(0.5);
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -999;
-}
-.banner h1 {
-  font-size: 6rem;
-  font-weight: 700;
-  width: min(100%, 800px);
-  margin: 0 auto;
-  color: var(--mshc);
-}
-.banner p {
-  font-size: 1.2rem;
-  color: var(--mshc) !important;
-  margin: 0 auto;
-  text-transform: capitalize;
-  font-weight: 500;
-  margin-bottom: 20px;
-  width: min(100%, 500px);
-}
-.banner a {
-  background-color: var(--btn-color);
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: "Poppins", sans-serif;
-  border: 2px solid var(--btn-color);
-  color: #ffffff;
-}
-.banner-info {
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-}
-.banner a:hover {
-  background-color: transparent;
-  border: 2px solid var(--btn-color);
-  color: #fff;
-}
-/* button of outline */
-.banner a.outline {
-  background-color: transparent;
-  border: 2px solid var(--btn-color);
-}
-.banner a.outline:hover {
-  background-color: var(--btn-color);
-  color: #fff;
-}
-
-.cards {
-  padding-bottom: 20px;
-}
-.cards h1 {
-  font-size: 3rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 20px;
-  text-align: center;
-}
-.cards .row {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  gap: 20px;
-}
-.cards .row .card {
-  display: flex;
-  justify-content: space-between;
-  border-radius: 10px;
-  cursor: pointer;
-}
-.cards .row .col-md-3:nth-child(odd) .card {
-  flex-direction: row-reverse;
-}
-.bgc {
-  background-color: #ebebeb;
-}
-.cards .row .col-md-3 {
-  transition: scale 0.2s;
-}
-.cards .row .col-md-3:hover {
-  scale: 1.01;
-}
-.fdrr {
-  flex-direction: row-reverse !important;
-}
-.cards .row .card .img {
-  flex: 0 0 30%;
-}
-.img img {
-  aspect-ratio: 1.5/1;
-  object-fit: cover;
-}
-.card-body {
-  padding: 10px;
-  flex: 0 0 70%;
-}
-
-.cards .col-md-3 {
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.cards .col-md-3 h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #333;
-  margin: 20px 0;
-}
-.cards .col-md-3 p {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 20px;
-}
-/* css for a button with a hover effect */
-.cards .col-md-3 a {
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: "Poppins", sans-serif;
-  color: #ffffff;
-}
-.cards .col-md-3 a:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-/* button of outline */
-.cards .col-md-3 a.outline {
-  background-color: transparent;
-  border: 2px solid var(--btn-color);
-}
-.cards .col-md-3 a.outline:hover {
-  background-color: var(--btn-color);
-  color: #fff;
-}
-
-.heading {
-  color: #333;
-  font-size: 2rem;
-  padding: 20px 0;
-}
-.wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  width: 100%;
-  padding: 10px;
-}
-.wrapper .img {
-  border: solid 1px #e3e3e3;
-  border-radius: 10px;
-  padding: 10px;
-}
-.wrapper .img img {
-  border-radius: 10px;
-  aspect-ratio: 12/13;
-  object-fit: cover;
-}
-.wrapper .info p {
-  color: #333;
-  padding: 5px;
-}
-.card-box {
-  border: solid 1px #e3e3e3;
-  background-color: white;
-  transition: scale 0.2s;
-}
-.card-box:hover {
-  scale: 1.02;
-}
-.all-listings {
-  row-gap: 20px;
-}
-p.two-line {
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  padding: 0 !important;
-  
-}
-p.one-line {
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  padding: 0 !important;
-  
-}
-.card-box :where(h3, p) {
-  margin: 10px 0;
-  padding: 0;
-  color: #333;
-}
-.line-box {
-  display: inline-block;
-  padding: 5px 10px;
-  background-color: #212529;
-  color: #f8f9fa;
-}
-
-/* all bootstrap form css */
-
-form#NewForm {
-  width: min(90%, 500px);
-  margin: 1rem auto;
-  background-color: #ffffff;
-  padding: 10px;
-}
-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-  cursor: pointer;
-}
-form input {
-  width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
 .dn {
   display: none;
-}
-.errmsg {
-  color: #dc3545;
-  font-size: 0.8rem;
-  font-weight: 400;
-  margin-top: 5px;
-}
-form input:focus {
-  border-color: #007bff;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-form textarea {
-  width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-form textarea:focus {
-  border-color: #007bff;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-form select {
-  width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-/* submit button css */
-form input[type="submit"] {
-  display: block;
-  width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #007bff;
-  background-image: none;
-  border: 1px solid #007bff;
-  border-radius: 0.25rem;
-  transition: color 0.15s;
-  margin-top: 10px;
-  cursor: pointer;
-}
-.invalid {
-  border: #dc3545 1px solid !important;
-  box-shadow: 0 0 0 0.2rem #dc384840 !important;
-}
-.gapr10 {
-  row-gap: 10px;
-}
-
-/*  */
-
-.info {
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 .price,
@@ -465,45 +54,8 @@ form input[type="submit"] {
 .cus-pad {
   padding: 20px;
 }
-.delete,
-.edit {
-  font-size: medium;
-  background-color: transparent;
-  text-decoration: underline;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.edit {
-  color: #007bff;
-}
-.delete {
-  color: #dc3545;
-}
 
-textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #e3e3e3;
-  resize: vertical;
-}
-
-/* Error page */
-/* 
-<div class="error-container">
-  <h1 class="error-heading">404</h1>
-  <h2 class="error-subheading">Page Not Found</h2>
-  <p class="error-text">
-    The page you are looking for might have been removed, had its name changed,
-    or is temporarily unavailable.
-  </p>
-  <a href="/" class="error-link">Go to Homepage</a>
-</div>
-
-*/
-
+/* Error Page*/
 .error-container {
   display: flex;
   flex-direction: column;
@@ -529,27 +81,6 @@ textarea {
   color: #666;
   margin: 10px 0;
 }
-.error-link {
-  background-color: var(--btn-color);
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: "Poppins", sans-serif;
-  border: 2px solid var(--btn-color);
-  color: #ffffff;
-}
-.error-link:hover {
-  background-color: transparent;
-  border: 2px solid var(--btn-color);
-  color: var(--btn-color);
-}
-/* <div class="error-message">
-    <h1>Something went wrong</h1>
-    <p>We are sorry, but an unexpected error has occurred. Please try again later.</p>
-    <a href="/" class="btn btn-primary">Go to Homepage</a>
-</div> */
 
 .error-message {
   display: flex;
@@ -586,10 +117,10 @@ textarea {
   border: 2px solid var(--btn-color);
   color: var(--btn-color);
 }
-.f25{
+.f25 {
   flex: 0 0 calc(25% - 15px);
 }
-.wraper{
+.wraper {
   width: 100%;
   background-color: white;
 }
@@ -612,31 +143,10 @@ textarea {
   color: var(--btn-color);
 }
 
-button.btn {
-  border: none;
-  cursor: pointer;
-}
-
-button.btn:hover {
-  background-color: transparent;
-  color: var(--btn-color);
-}
-
-
-
-.cards-box .card{
-  background-color: #fff;
-}
-.cards-box .content{
-  padding: 20px 10px;
-}
-.avature{
+.avature {
   aspect-ratio: 1/1;
   object-fit: cover;
 }
-
-
-
 
 .Showreview {
   padding: 20px;
@@ -657,4 +167,9 @@ button.btn:hover {
   font-size: 1rem;
   color: #666;
   margin: 10px 0 0;
+}
+
+
+.max{
+  max-width: min(100%, calc(var(--container-size) / 4 + 50px));
 }

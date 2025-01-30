@@ -1,5 +1,7 @@
-<!-- bilerplate -->
 <% layout("/boilerplate") %>
+
+
+
 <datalist id="titles">
   <option value="Hidden Oasis in the Maldives"></option>
   <option value="Tranquil Villa on the Amalfi Coast"></option>
@@ -17,15 +19,15 @@
   <option value="Mount Fuji, Honshu Island, Japan"></option>
 </datalist>
 <datalist id="countries">
-  <option value="USA">
-  <option value="UK">
-  <option value="China">
-  <option value="Pakistan">
-  <option value="Mexico">
+  <option value="USA"></option>
+  <option value="UK"></option>
+  <option value="China"></option>
+  <option value="Pakistan"></option>
+  <option value="Mexico"></option>
 </datalist>
 
 <!-- content -->
-<h1 class="main-heading tac">Listing Details</h1>
+<h1 class="heading1">Listing Details</h1>
 <form action="/listings/new" id="NewForm" method="post">
   <div class="input-area">
     <label for="title" class="form-label">Title</label>
@@ -58,7 +60,7 @@
     <input
       type="text"
       autocomplete="on"
-      class="form-contro img"
+      class="form-control img"
       name="image[url]"
       id="ImageUrl"
     />

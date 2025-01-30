@@ -1,6 +1,6 @@
 let data = () => {
   let inputs = document.querySelectorAll(".form-control");
-  let allFieldsValid = true; 
+  let allFieldsValid = true;
   for (let element of inputs) {
     if (element.value === "") {
       let nextElement = element.nextElementSibling;
@@ -14,15 +14,17 @@ let data = () => {
 
   return allFieldsValid;
 };
+
 try {
   let form = document.querySelector("#NewForm");
   form.addEventListener("submit", (e) => {
-    data()
+    data();
     if (!data()) {
       e.preventDefault();
     }
   });
 } catch (error) {}
+
 try {
   document.querySelectorAll(".form-control").forEach((element) => {
     element.addEventListener("keyup", (e) => {
@@ -34,5 +36,11 @@ try {
         element.nextElementSibling.style.display = "none";
       }
     });
+  });
+} catch (error) {}
+
+try {
+  document.querySelector("#rating").addEventListener("input", (e) => {
+    document.querySelector('.rating').textContent = e.target.value
   });
 } catch (error) {}

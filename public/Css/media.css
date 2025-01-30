@@ -1,0 +1,8 @@
+@media screen and (max-width: 700px) {
+    a.card {
+        flex-direction: column;
+    }
+    a.card:nth-child(odd) {
+        flex-direction: column !important;
+    }
+}

@@ -10,8 +10,6 @@ const app = express();
 const Listing = require("./models/listing.js");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressErrors.js");
-const { reviewSchema } = require("./schema.js");
-const Review = require("./models/reviews.js");
 const listingsRoute = require('./Router/listingRouter.js')
 const ReviewRoute = require('./Router/reviews.js')
 
