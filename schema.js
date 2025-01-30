@@ -7,9 +7,9 @@ module.exports.listingSchema = Joi.object({
     location: Joi.string().required(),
     country: Joi.string().required(),
     image: Joi.allow("", null)
-}).required()
+})
 
 module.exports.reviewSchema = Joi.object({
     comment : Joi.string().required(),
     rating: Joi.number().required().min(1).max(5),
-}).required()
+})

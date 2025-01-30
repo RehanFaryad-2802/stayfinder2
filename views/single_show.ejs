@@ -35,7 +35,7 @@
   <h1 class="main-heading">People Reviews</h1>
   <div class="allReviews f">
     <% for (let i = listing.reviews.length - 1; i >= 0; i--) { %>
-    <div class="f cg20 aic f10 Showreview">
+    <div class="f pointer cg20 aic f10 Showreview">
       <div class="f1">
         <div class="avature">
           <img
@@ -47,11 +47,15 @@
       </div>
       <div class="f9">
         <div class="name">
-          <h4>Asembler</h4>
+          <h4>Asembler </h4>
         </div>
         <div class="comment">
           <p class="one-line"><%= listing.reviews[i].comment %></p>
+          <span class="green"> Rating : <%= listing.reviews[i].rating %></span>
         </div>
+        <form method="post" action="/listings/<%= listing.id%>/review/<%= listing.reviews[i]._id%>?_method=DELETE">
+          <button class="delete">Delete</button>
+        </form>
       </div>
     </div>
     <% } %>

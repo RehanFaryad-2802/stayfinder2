@@ -23,6 +23,9 @@ datalist {
   max-height: 100px; /* This sets the visible height */
   overflow-y: auto; /* Enables vertical scrolling */
 }
+.green{
+  color: green;
+}
 /* Remove the arrow for the datalist */
 input::-webkit-calendar-picker-indicator {
   display: none !important; /* Hides the dropdown arrow in Chrome, Edge, etc. */
