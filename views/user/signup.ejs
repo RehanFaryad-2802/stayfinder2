@@ -1,0 +1,56 @@
+<!-- boilerplate -->
+<% layout('boilerplate') %>
+
+<div class="container">
+  <h1 class="heading1 tac">Sign Up</h1>
+  <form action="/signup" method="post" id="NewForm">
+    <div class="input-area">
+      <label for="username" class="form-label">User Name</label>
+      <input
+        name="username"
+        autocomplete="off"
+        type="text"
+        class="form-control username"
+        id="username"
+      />
+      <h4 class="errmsg dn">Enter User Name</h4>
+    </div>
+    <div class="input-area">
+      <label for="email" class="form-label">Email</label>
+      <input
+        autocomplete="on"
+        name="email"
+        type="email"
+        class="form-control email"
+        id="email"
+      />
+      <h4 class="errmsg dn">Enter Valid Email</h4>
+    </div>
+    <div class="input-area">
+      <label for="password" class="form-label">Password</label>
+      <input
+        name="password"
+        type="password"
+        class="form-control email"
+        id="password"
+      />
+      <h4 class="errmsg dn">Enter Strong Password</h4>
+    </div>
+
+    <div class="input-area">
+      <label for="dp" class="form-label">Profile Picture</label>
+      <input
+        autocomplete="on"
+        name="dp"
+        type="url"
+        class="form-control dp"
+        id="dp"
+      />
+      <h4 class="errmsg dn">Enter Valid dp Url</h4>
+    </div>
+
+    <div class="input-area">
+      <input type="submit" value="Sign Up" class="Newsubmit" />
+    </div>
+  </form>
+</div>

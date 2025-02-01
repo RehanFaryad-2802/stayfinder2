@@ -2,6 +2,8 @@
   text-align: center;
   background-image: url("https://images.unsplash.com/photo-1512487373213-0a3f14d5ea1b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-position: center;
   background-color: rgba(0, 0, 0, 0.212);
   background-blend-mode: darken;
@@ -90,12 +92,7 @@
 .bgc {
   background-color: #ebebeb;
 }
-.cards .row .col-md-3 {
-  transition: scale 0.2s;
-}
-.cards .row .col-md-3:hover {
-  scale: 1.01;
-}
+
 .fdrr {
   flex-direction: row-reverse !important;
 }
@@ -149,11 +146,7 @@
   background-color: var(--btn-color);
   color: #fff;
 }
-.heading {
-  color: #333;
-  font-size: 2rem;
-  padding: 20px 0;
-}
+
 .wrapper {
   max-width: 1100px;
   margin: 0 auto;
@@ -177,11 +170,8 @@
 .card-box {
   border: solid 1px #e3e3e3;
   background-color: white;
-  transition: scale 0.2s;
 }
-.card-box:hover {
-  scale: 1.02;
-}
+
 .all-listings {
   row-gap: 20px;
 }

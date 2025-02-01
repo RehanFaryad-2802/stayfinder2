@@ -35,6 +35,7 @@ router.post(
   wrapAsync(async (req, res) => {
     let data = req.body;
     await Listing.insertMany(data);
+    req.flash('success', 'New listing created!');
     res.redirect("/listings");
   })
 );
@@ -45,6 +46,7 @@ router.delete(
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     await Listing.findByIdAndDelete(id);
+    req.flash('error', 'Listing deleted!');
     res.redirect("/listings");
   })
 );
@@ -77,6 +79,7 @@ router.put(
     let { id } = req.params;
     let data = req.body;
     await Listing.findByIdAndUpdate(id, data);
+    req.flash('success', 'Listing updated!');
     res.redirect(`/listings/${id}`);
   })
 );

@@ -10,10 +10,10 @@
   display: flex;
   align-items: center;
 }
-.navbar .menu li {
+.navbar li {
   margin-right: 20px;
 }
-.navbar .menu li a {
+.navbar li a {
   color: #333;
   text-decoration: none;
   font-size: 1rem;
@@ -23,7 +23,7 @@
 .logo{
   width: 40px !important;
 }
-.navbar .menu li a:hover {
+.navbar li a:hover {
   color: var(--btn-color);
 }
 /* class footer row, col-md-3, list-unstyled,  */

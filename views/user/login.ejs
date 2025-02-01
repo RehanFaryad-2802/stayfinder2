@@ -1,0 +1,32 @@
+<!-- boilerplate -->
+<% layout('boilerplate') %>
+
+<div class="container">
+  <h1 class="heading1 tac">Log In</h1>
+  <form action="/login" method="post" id="NewForm">
+    <div class="input-area">
+      <label for="username" class="form-label">User Name</label>
+      <input
+        name="username"
+        autocomplete="off"
+        type="text"
+        class="form-control username"
+        id="username"
+      />
+      <h4 class="errmsg dn">Enter User Name</h4>
+    </div>  
+    <div class="input-area">
+      <label for="password" class="form-label">Password</label>
+      <input
+        name="password"
+        type="password"
+        class="form-control email"
+        id="password"
+      />
+      <h4 class="errmsg dn">Enter Strong Password</h4>
+    </div>
+    <div class="input-area">
+      <input type="submit" value="Log In" class="Newsubmit" />
+    </div>
+  </form>
+</div>

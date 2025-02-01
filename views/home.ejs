@@ -20,7 +20,7 @@
 
 <div class="cards container">
   <h1 class="heading1">Most Populer Listings</h1>
-  <div class="row grow">
+  <div class="row shrink">
     <!--  -->
     <% for (let i = 5; i <= 8; i++) { %> 
       <div class="col-md-3">
@@ -44,7 +44,7 @@
 
 <div class="cards-box container">
   <h1 class="heading1">Featured Listings</h1>
-  <div class="f gapc10 col-4 grow">
+  <div class="f gapc10 col-4 shrink">
     <% for (let i = 2; i < 6; i++) { %>
       <div class="f0">
         <a href="/listings/<%= listings[i]._id %>" class="card">

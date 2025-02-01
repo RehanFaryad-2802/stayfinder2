@@ -1,0 +1,21 @@
+<% if (success && success.length > 0) { %>
+    <div class="msg_box success f jcsb">
+      <div class="msg"><%=success %></div>
+      <input type="checkbox" name="close" id="close" />
+      <div class="shake">
+        <label for="close" class="close pointer">X</label>
+      </div>
+    </div>
+    <% } %>
+
+    <!--  -->
+
+    <% if (error && error.length > 0) { %>
+    <div class="msg_box alert f jcsb">
+      <div class="msg"><%=error %></div>
+      <input type="checkbox" name="close" id="close" />
+      <div class="grow">
+        <label for="close" class="close pointer">X</label>
+      </div>
+    </div>
+    <% } %>

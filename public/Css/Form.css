@@ -4,10 +4,11 @@ form#NewForm {
   background-color: #ffffff;
   padding: 10px;
 }
-form label {
+.input-area label {
   display: block;
-  margin-bottom: 0.5rem;
-  cursor: pointer;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: bold;
 }
 form input {
   width: 100%;

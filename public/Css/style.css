@@ -169,7 +169,29 @@ body {
   margin: 10px 0 0;
 }
 
-
-.max{
+.max {
   max-width: min(100%, calc(var(--container-size) / 4 + 50px));
+}
+
+.msg_box {
+  width: 50%;
+  margin: 2rem auto;
+  padding: 15px 2rem;
+  border-radius: 4px;
+  font-weight: bold;
+  color: white;
+}
+.msg_box.success {
+  border: 1px solid #d6e9c6;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+.msg_box.alert {
+  border: 1px solid #ebccd1;
+  color: #a94442;
+  background-color: #f2dede;
+}
+
+.msg_box:has(input[type="checkbox"]:checked) {
+  display: none;
 }
