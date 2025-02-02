@@ -25,6 +25,10 @@ router.get(
 
 // Sending new listing page
 router.get("/new", (req, res) => {
+  if(!req.isAuthenticated()){
+    req.flash('error', 'You must be logged in!');
+    return res.redirect('/login');
+  }
   res.render("new.ejs");
 });
 
