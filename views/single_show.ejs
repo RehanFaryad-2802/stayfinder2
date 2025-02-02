@@ -5,7 +5,10 @@
       <img src="<%= listing.image.url %>" alt="image" />
     </div>
     <div class="f0 p1r f rg30 fdc">
-      <h1 class="heading"><%= listing.title %></h1>
+      <div class="p">
+        <h1 class="heading"><%= listing.title %></h1>
+        <p class="mt5"> <span>Owned by </span> <i class="code-box">@<%= listing.owner.username %></i></p>
+      </div>
       <p class="price">
         <b>Price:</b> <span class="box">Rs. <%= listing.price %></span>
       </p>

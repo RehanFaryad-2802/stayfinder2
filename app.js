@@ -9,15 +9,7 @@ const app = express();
 // Flash message
 const session = require("express-session");
 const flash = require("connect-flash");
-app.use(
-  session({
-    secret: "secret",
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false },
-  })
-);
-app.use(flash());
+
 // my data
 const Listing = require("./models/listing.js");
 const wrapAsync = require("./utils/wrapAsync.js");
@@ -44,9 +36,11 @@ app.use(
   require("express-session")({
     secret: "secret",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
   })
 );
+app.use(flash());
 
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
@@ -59,11 +53,7 @@ main()
 async function main() {
   await mongoose.connect(MONGO_URL);
 }
-app.use((req, res, next) => {
-  res.locals.success = req.flash("success");
-  res.locals.error = req.flash("error");
-  next();
-});
+
 // passport config
 app.use(passport.initialize());
 app.use(passport.session());
@@ -71,7 +61,12 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser()); 
 passport.deserializeUser(User.deserializeUser());
 
-
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  res.locals.currUser = req.user;
+  next();
+});
 
 app.get(
   "/",

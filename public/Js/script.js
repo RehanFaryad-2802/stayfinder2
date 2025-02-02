@@ -41,6 +41,13 @@ try {
 
 try {
   document.querySelector("#rating").addEventListener("input", (e) => {
-    document.querySelector('.rating').textContent = e.target.value
+    document.querySelector(".rating").textContent = e.target.value;
   });
 } catch (error) {}
+
+setTimeout(() => {
+  if (document.querySelector(".msg_box")) {
+    document.querySelector(".msg_box").remove();
+    console.log("removed");
+  }
+}, 5000);

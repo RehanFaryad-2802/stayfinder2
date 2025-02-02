@@ -6,6 +6,7 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const ExpressError = require("../utils/ExpressErrors.js");
 const { reviewSchema } = require("../schema.js");
 const Review = require("../models/reviews.js");
+const { isLogin } = require("../middleware.js");
 
 let validateReviews = (req, res, next) => {
   let { error } = reviewSchema.validate(req.body);
@@ -18,6 +19,7 @@ let validateReviews = (req, res, next) => {
 
 router.post(
   "/",
+  isLogin,
   validateReviews,
   wrapAsync(async (req, res) => {
     let listing = await Listing.findById(req.params.id);
@@ -31,6 +33,7 @@ router.post(
 
 router.delete(
   "/:reviewId",
+  isLogin,
   wrapAsync(async (req, res) => {
     let { id, reviewId } = req.params;
     await Listing.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });

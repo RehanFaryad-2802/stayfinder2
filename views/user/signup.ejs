@@ -2,7 +2,7 @@
 <% layout('boilerplate') %>
 
 <div class="container">
-  <h1 class="heading1 tac">Sign Up</h1>
+  <h1 class="heading1 tac">Create Account</h1>
   <form action="/signup" method="post" id="NewForm">
     <div class="input-area">
       <label for="username" class="form-label">User Name</label>
@@ -51,6 +51,11 @@
 
     <div class="input-area">
       <input type="submit" value="Sign Up" class="Newsubmit" />
+    </div>
+    <div class="input-area">
+      <button class="mt5 edit">
+        <a href="/login" class="edit">Already have an account</a>
+      </button>
     </div>
   </form>
 </div>
