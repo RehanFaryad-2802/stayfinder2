@@ -2,6 +2,7 @@
 @import url("./bannerCards.css");
 @import url("./Form.css");
 @import url("./media.css");
+@import url("./profile.css");
 :root {
   --btn-color: #00a8fc;
   --container-size: 1300px;

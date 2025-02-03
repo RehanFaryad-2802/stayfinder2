@@ -7,7 +7,10 @@
     <div class="f0 p1r f rg30 fdc">
       <div class="p">
         <h1 class="heading"><%= listing.title %></h1>
-        <p class="mt5"> <span>Owned by </span> <i class="code-box">@<%= listing.owner.username %></i></p>
+        <p class="mt5">
+          <span>Owned by </span>
+          <i class="code-box">@<%= listing.owner.username %></i>
+        </p>
       </div>
       <p class="price">
         <b>Price:</b> <span class="box">Rs. <%= listing.price %></span>
@@ -18,6 +21,7 @@
       <p class="country">
         <b>Country:</b> <span class="box"><%= listing.country %></span>
       </p>
+      <% if(currUser && currUser._id.equals(listing.owner._id)){ %>
       <div class="f aic">
         <form
           action="/listings/<%= listing._id %>?_method=DELETE"
@@ -29,6 +33,7 @@
         </form>
         <a href="/listings/<%= listing._id %>/edit" class="edit">Edit</a>
       </div>
+      <% } %>
     </div>
   </div>
   <div class="descrip-box f10">
@@ -47,27 +52,29 @@
         <div class="avature">
           <img
             class="br100p"
-            src="https://i.pravatar.cc/<%= i + 1 %>00"
+            src="<%= listing.reviews[i].author.dp %>"
             alt=""
           />
         </div>
       </div>
       <div class="f9">
         <div class="name">
-          <h4>Asembler</h4>
+          <h4> <i>@<%= listing.reviews[i].author.username %></i> </h4>
         </div>
         <div class="comment">
           <p class="one-line"><%= listing.reviews[i].comment %></p>
           <span class="green"> Rating : <%= listing.reviews[i].rating %></span>
         </div>
-        <form
-          method="post"
-          action="/listings/<%= listing.id%>/review/<%= listing.reviews[i]._id%>?_method=DELETE"
-        >
-        <div class="shake">
-          <button class="delete">Delete</button>
-        </div>
-        </form>
+        <%if(currUser && currUser._id.equals(listing.reviews[i].author._id)){ %>
+          <form
+            method="post"
+            action="/listings/<%= listing.id%>/review/<%= listing.reviews[i]._id%>?_method=DELETE"
+          >
+            <div class="shake">
+              <button class="delete">Delete</button>
+            </div>
+          </form>
+        <% }%>
       </div>
     </div>
     <% } } %>

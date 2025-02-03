@@ -16,6 +16,10 @@ router.route("/logout").get((req, res, next) => {
   });
 });
 
+router.route("/profile").get((req, res) => {
+  res.render("../views/user/profile.ejs", { user: req.user });
+});
+
 router
   .route("/signup")
   .get((req, res) => {

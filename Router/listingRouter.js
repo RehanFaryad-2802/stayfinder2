@@ -3,17 +3,7 @@ const router = express.Router();
 
 const Listing = require("../models/listing.js");
 const wrapAsync = require("../utils/wrapAsync.js");
-const ExpressError = require("../utils/ExpressErrors.js");
-const { listingSchema } = require("../schema.js");
-const { isLogin } = require("../middleware.js");
-let validateListing = (req, res, next) => {
-  let { error } = listingSchema.validate(req.body);
-  if (error) {
-    throw new ExpressError(400, error);
-  } else {
-    next();
-  }
-};
+const { isLogin, isOwner, validateListing } = require("../middleware.js");
 
 router.get(
   "/",
@@ -24,7 +14,7 @@ router.get(
 );
 
 // Sending new listing page
-router.get("/new", isLogin ,(req, res) => {
+router.get("/new", isLogin, (req, res) => {
   res.render("new.ejs");
 });
 
@@ -35,7 +25,6 @@ router.post(
   validateListing,
   wrapAsync(async (req, res) => {
     let data = req.body;
-    // await Listing.insertMany(data);
     const newListing = await Listing.create(data);
     newListing.owner = req.user._id;
     newListing.save();
@@ -48,6 +37,7 @@ router.post(
 router.delete(
   "/:id",
   isLogin,
+  isOwner,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     await Listing.findByIdAndDelete(id);
@@ -61,7 +51,14 @@ router.get(
   "/:id",
   wrapAsync(async (req, res) => {
     let { id } = req.params;
-    const listing = await Listing.findById(id).populate("reviews").populate("owner");
+    const listing = await Listing.findById(id)
+      .populate({
+        path: "reviews",
+        populate: {
+          path: "author",
+        },
+      })
+      .populate("owner");
     res.render("single_show.ejs", { listing });
   })
 );
@@ -70,6 +67,7 @@ router.get(
 router.get(
   "/:id/edit",
   isLogin,
+  isOwner,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findById(id);
@@ -77,10 +75,10 @@ router.get(
   })
 );
 
-// Updating a listing
 router.put(
   "/:id/edit",
   isLogin,
+  isOwner,
   validateListing,
   wrapAsync(async (req, res, next) => {
     let { id } = req.params;
