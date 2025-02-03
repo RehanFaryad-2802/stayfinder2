@@ -76,9 +76,9 @@ app.get(
     res.render("home.ejs", { listings });
   })
 );
-app.use("/", userRoute);
 app.use("/listings", listingsRoute);
 app.use("/listings/:id/review", ReviewRoute);
+app.use("/", userRoute);
 
 app.all("*", async (req, res, next) => {
   next(new ExpressError(404, "Page Not Found"));

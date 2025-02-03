@@ -2,19 +2,65 @@
 
 <!--   profile page  -->
 
-<div class="f fdc">
+<div class="f fdc profile container">
   <div class="f10">
-    <div class="img profile-banner">
-      
+    <div class="profile-banner br10">
+      <img
+        src="https://cdn.pixabay.com/photo/2015/08/23/09/22/banner-902589_1280.jpg"
+        alt="Banner"
+      />
     </div>
   </div>
-  <div class="f jcsb">
-    <div class="f3">
-      <img src="<%= currUser.dp %>" alt="profile" />
+  <div class="f nowrap user-info br20 aic mt20">
+    <div class="f1-5">
+      <img src="<%= currUser.dp %>" class="br100p" alt="profile" />
     </div>
-    <div class="f6">
-      <h2><%= currUser.username %></h2>
-      <p>Email: <%= currUser.email %></p>
+    <div class="f4 f fdc rg10 ml20">
+      <h2 class="mtc"><i>@<%= currUser.username %></i></h2>
+      <p class="mt mtc">🟢<i class="id"> User ID @<%= currUser._id %></i></p>
+      <a href="/logout" class="edit">Logout</a>
     </div>
   </div>
+</div>
+<hr />
+<div class="container">
+  <% if (!UserListings.length == 0) { %>
+  <div class="f aic">
+    <div class="f33"></div>
+    <div class="f33">
+      <h1 class="heading1">Your Listings</h1>
+    </div>
+    <div class="f33 tae">
+      <a href="/listings/new" class="btn">Create Listing</a>
+    </div>
+  </div>
+  <div class="all-listings jcc f col-4 gapc10">
+    <% for (let i = UserListings.length - 1; i >= 0; i--) { %>
+    <div class="card-box max f1">
+      <div class="row">
+        <div class="col-md-3">
+          <a
+            href="/listings/<%= UserListings[i]._id %>"
+            class="card f fdc jcsb"
+          >
+            <div class="img">
+              <img src="<%= UserListings[i].image.url %>" alt="image" />
+            </div>
+            <div class="card-body f fdc jcsb">
+              <h3 class="one-line"><%= UserListings[i].title %></h3>
+              <p class="two-line"><%= UserListings[i].description %></p>
+              <p>
+                <span class="line-box">Rs.<%= UserListings[i].price %></span>
+                <span class="line-box"><%= UserListings[i].country %></span>
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+  <% }else{ %>
+  <h1 class="heading1">No Listings Created!</h1>
+  <% } %>
 </div>

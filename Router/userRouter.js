@@ -3,7 +3,8 @@ const router = express.Router({ mergeParams: true });
 const passport = require("passport");
 const User = require("../models/user.js");
 const wrapAsync = require("../utils/wrapAsync");
-const { saveReturnTo } = require("../middleware.js");
+const { saveReturnTo, isLogin } = require("../middleware.js");
+const Listing = require("../models/listing.js");
 
 router.route("/logout").get((req, res, next) => {
   req.logout((err) => {
@@ -14,10 +15,6 @@ router.route("/logout").get((req, res, next) => {
       res.redirect("/listings");
     }
   });
-});
-
-router.route("/profile").get((req, res) => {
-  res.render("../views/user/profile.ejs", { user: req.user });
 });
 
 router
@@ -58,9 +55,16 @@ router
     }),
     async (req, res, next) => {
       let { username, password } = req.body;
-      req.flash("success", `Welcome Back "${username.charAt(0).toUpperCase() + username.slice(1)}"`);
+      req.flash(
+        "success",
+        `Welcome Back "${username.charAt(0).toUpperCase() + username.slice(1)}"`
+      );
       res.redirect(res.locals.returnTo || "/listings");
     }
   );
 
+router.route("/profile").get(isLogin, async (req, res) => {
+  let UserListings = await Listing.find({ owner: req.user._id });
+  res.render("../views/user/profile.ejs", { UserListings });
+});
 module.exports = router;

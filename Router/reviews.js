@@ -16,7 +16,6 @@ router.post(
     let NewReview = new Review(req.body);
     NewReview.author = req.user._id;
     listing.reviews.push(NewReview);
-    console.log(NewReview);
     NewReview.save();
     listing.save();
     res.redirect(`/listings/${listing._id}`);

@@ -107,7 +107,9 @@
   padding: 10px;
   flex: 0 0 70%;
 }
-
+.all-listings .img{
+  width: 100%;
+}
 .cards .col-md-3 {
   background-color: #fff;
   border-radius: 5px;
@@ -160,7 +162,8 @@
 }
 .wrapper .img img {
   border-radius: 10px;
-  aspect-ratio: 12/13;
+  /* aspect-ratio: 18/16; */
+  height: 100%;
   object-fit: cover;
 }
 .wrapper .info p {

@@ -8,6 +8,7 @@
   --container-size: 1300px;
   --f3: 0 0 calc(33.335% - 20px);
   --sh: 1.2rem;
+  --mtc: #333;
   --danger-color: #dc3545;
   --light-color: #f8f9fa;
   --dark-color: #343a40;
@@ -24,9 +25,6 @@
 
 .green {
   color: green;
-}
-.img {
-  width: 100%;
 }
 .code-box{
   background-color: #151515;
