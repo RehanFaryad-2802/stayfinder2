@@ -9,7 +9,9 @@
         <h1 class="heading"><%= listing.title %></h1>
         <p class="mt5">
           <span>Owned by </span>
-          <i class="code-box">@<%= listing.owner.username %></i>
+          <a href="/user/<%= listing.owner.username %>/profile">
+            <i class="code-box">@<%= listing.owner.username %></i>
+          </a>
         </p>
       </div>
       <p class="price">

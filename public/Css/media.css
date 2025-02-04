@@ -6,3 +6,12 @@
         flex-direction: column !important;
     }
 }
+@media screen and (max-width: 700px) {
+    .User-listings p{
+        display: none;
+    }
+    .delete-edit{
+        align-items: center;
+        justify-content: center;
+    }
+}

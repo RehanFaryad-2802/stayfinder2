@@ -15,9 +15,12 @@
     <div class="f1-5">
       <img src="<%= currUser.dp %>" class="br100p" alt="profile" />
     </div>
-    <div class="f4 f fdc rg10 ml20">
+    <div class="f8 f fdc rg10 ml20">
       <h2 class="mtc"><i>@<%= currUser.username %></i></h2>
       <p class="mt mtc">🟢<i class="id"> User ID @<%= currUser._id %></i></p>
+      <p class="mt mtc">
+        🟢<i class="id"> Listings : <%= UserListings.length %></i>
+      </p>
       <a href="/logout" class="edit">Logout</a>
     </div>
   </div>
@@ -34,27 +37,33 @@
       <a href="/listings/new" class="btn">Create Listing</a>
     </div>
   </div>
-  <div class="all-listings jcc f col-4 gapc10">
+  <div class="all-listings col-10 jcc f fdc gapr10">
     <% for (let i = UserListings.length - 1; i >= 0; i--) { %>
-    <div class="card-box max f1">
-      <div class="row">
-        <div class="col-md-3">
-          <a
-            href="/listings/<%= UserListings[i]._id %>"
-            class="card f fdc jcsb"
+      <div class="f10 f col-7 User-listings card-box jcsb">
+        <div class="img f2 grow">
+          <a href="/listings/<%= UserListings[i].id %>" class="block">
+          <img src="<%=UserListings[i].image.url%>" alt="" />
+        </a> 
+      </div>
+      <div class="f fdc jcse f8">
+        <h3 class="one-line"><%= UserListings[i].title %></h3>
+        <p class="two-line st"><%= UserListings[i].description %></p>
+        <p>
+          <span class="line-box">Rs.<%= UserListings[i].price %></span>
+          <span class="line-box"><%= UserListings[i].country %></span>
+        </p>
+        <div class="f aic delete-edit">
+          <form
+            action="/listings/<%= UserListings[i]._id %>?_method=DELETE"
+            method="post"
           >
-            <div class="img">
-              <img src="<%= UserListings[i].image.url %>" alt="image" />
+            <div class="shake">
+              <button class="delete">Delete</button>
             </div>
-            <div class="card-body f fdc jcsb">
-              <h3 class="one-line"><%= UserListings[i].title %></h3>
-              <p class="two-line"><%= UserListings[i].description %></p>
-              <p>
-                <span class="line-box">Rs.<%= UserListings[i].price %></span>
-                <span class="line-box"><%= UserListings[i].country %></span>
-              </p>
-            </div>
-          </a>
+          </form>
+          <a href="/listings/<%= UserListings[i]._id %>/edit" class="edit"
+            >Edit</a
+          >
         </div>
       </div>
     </div>

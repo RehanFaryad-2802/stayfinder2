@@ -62,7 +62,9 @@ body {
 .cus-pad {
   padding: 20px;
 }
-
+a.block{
+  display: inline-block;
+}
 /* Error Page*/
 .error-container {
   display: flex;

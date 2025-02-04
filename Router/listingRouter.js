@@ -42,7 +42,7 @@ router.delete(
     let { id } = req.params;
     await Listing.findByIdAndDelete(id);
     req.flash("error", "Listing deleted!");
-    res.redirect("/listings");
+    res.redirect("/user/" + req.user.username);
   })
 );
 
