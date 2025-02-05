@@ -3,28 +3,46 @@
 <h1 class="heading1">Most Popular Listings</h1>
 
 <div class="container all-listings jcc f col-4 gapc10">
-  
   <% for (let i = listings.length - 1; i >= 0; i--) { %>
-    <div class="card-box max f0">
-      <div class="row">
-        <div class="col-md-3">
-          <a href="/listings/<%= listings[i]._id %>" class="card f fdc jcsb">
-            <div class="img">
-              <img src="<%= listings[i].image.url %>" alt="image" />
-            </div>
-            <div class="card-body f fdc jcsb">
-              <h3 class="one-line"><%= listings[i].title %></h3>
+  <div class="card-box max f0">
+    <div class="row">
+      <div class="col-md-3">
+        <a href="/listings/<%= listings[i]._id %>" class="card f fdc jcsb">
+          <div class="img">
+            <img src="<%= listings[i].image.url %>" alt="image" />
+          </div>
+          <div class="card-body f fdc jcsb">
+            <h3 class="one-line"><%= listings[i].title %></h3>
+            <div class="f">
               <p class="two-line"><%= listings[i].description %></p>
-              <p>
-                <span class="line-box">Rs.<%= listings[i].price %></span>
-                <span class="line-box"><%= listings[i].country %></span>
+              <p class="f cg10">
+                <span class="box2 f aic"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="mr5"
+                  >
+                    <path
+                      d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                    />
+                    <circle cx="12" cy="12" r="3" /></svg
+                  ><i> <%= listings[i].views +1 %></i></span
+                >
+                <span class="box2"><%= listings[i].country %></span>
               </p>
             </div>
-          </a>
-        </div>
+          </div>
+        </a>
       </div>
     </div>
-    
+  </div>
+
   <% } %>
 </div>
-

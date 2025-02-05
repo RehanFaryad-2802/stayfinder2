@@ -179,7 +179,7 @@
 .all-listings {
   row-gap: 20px;
 }
-p.two-line {
+.two-line {
   display: -webkit-box;
   line-clamp: 2;
   -webkit-line-clamp: 2;

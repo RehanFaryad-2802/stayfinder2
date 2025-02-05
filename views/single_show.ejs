@@ -1,28 +1,78 @@
 <%- layout("boilerplate") %>
 <div class="wrapper f fdc">
   <div class="row f col-4 jcsb">
-    <div class="img grow-blur pointer f0">
+    <div class="img grow-blur f0">
       <img src="<%= listing.image.url %>" alt="image" />
     </div>
     <div class="f0 p1r f rg30 fdc">
       <div class="p">
         <h1 class="heading"><%= listing.title %></h1>
-        <p class="mt5">
+        <div class="mt5">
           <span>Owned by </span>
-          <a href="/user/<%= listing.owner.username %>/profile">
+          <a href="/user/profile/<%= listing.owner.username %>">
             <i class="code-box">@<%= listing.owner.username %></i>
           </a>
-        </p>
+        </div>
+        <div class="info f aic">
+          <div class="mt20 f box2 aic">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+              />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            <span class="ml10"><%= listing.views %></span>
+            <% if (listing.reviews.length != 0) {%>
+            <div class="f box2 aic">
+              <span>, Rating :</span>
+              <span>
+                <%= Math.round(listing.reviews. reduce((sum, review) => sum +
+                review.rating, 0) / listing.reviews.length )%>
+              </span>
+            </div>
+            <% } %>
+          </div>
+        </div>
       </div>
       <p class="price">
-        <b>Price:</b> <span class="box">Rs. <%= listing.price %></span>
+        <b>Price:</b> <span class="box">Rs. <%= listing.price %> /-</span>
       </p>
-      <p class="location">
-        <b>Location:</b> <span class="box"><%= listing.location %></span>
-      </p>
-      <p class="country">
-        <b>Country:</b> <span class="box"><%= listing.country %></span>
-      </p>
+      <div class="location">
+        <b class="">Location:</b>
+        <div class="f aic mbgc">
+          <div class="p10">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-map-pin"
+            >
+              <path
+                d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+              />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <span class="wtc"><%= listing.location %> ,</span>
+          <span class="wtc"><%= listing.country %></span>
+        </div>
+      </div>
       <% if(currUser && currUser._id.equals(listing.owner._id)){ %>
       <div class="f aic">
         <form
@@ -49,7 +99,7 @@
   <h1 class="heading1">People Reviews</h1>
   <div class="allReviews f">
     <% for (let i = listing.reviews.length - 1; i >= 0; i--) { %>
-    <div class="f pointer cg20 aic f10 Showreview">
+    <div class="f cg20 aic f10 Showreview">
       <div class="f1">
         <div class="avature">
           <img
@@ -61,21 +111,22 @@
       </div>
       <div class="f9">
         <div class="name">
-          <h4> <i>@<%= listing.reviews[i].author.username %></i> </h4>
+          <h4><i>@<%= listing.reviews[i].author.username %></i></h4>
         </div>
         <div class="comment">
           <p class="one-line"><%= listing.reviews[i].comment %></p>
+
           <span class="green"> Rating : <%= listing.reviews[i].rating %></span>
         </div>
         <%if(currUser && currUser._id.equals(listing.reviews[i].author._id)){ %>
-          <form
-            method="post"
-            action="/listings/<%= listing.id%>/review/<%= listing.reviews[i]._id%>?_method=DELETE"
-          >
-            <div class="shake">
-              <button class="delete">Delete</button>
-            </div>
-          </form>
+        <form
+          method="post"
+          action="/listings/<%= listing.id%>/review/<%= listing.reviews[i]._id%>?_method=DELETE"
+        >
+          <div class="shake">
+            <button class="delete">Delete</button>
+          </div>
+        </form>
         <% }%>
       </div>
     </div>

@@ -9,6 +9,7 @@
   --f3: 0 0 calc(33.335% - 20px);
   --sh: 1.2rem;
   --mtc: #333;
+  --mbgc: #151515;
   --danger-color: #dc3545;
   --light-color: #f8f9fa;
   --dark-color: #343a40;
@@ -55,6 +56,11 @@ body {
 }
 .box {
   display: block;
+  padding: 5px 10px;
+  background-color: #151515;
+  color: #f8f9fa;
+}
+.box2 {
   padding: 5px 10px;
   background-color: #151515;
   color: #f8f9fa;

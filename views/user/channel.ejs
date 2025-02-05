@@ -15,14 +15,26 @@
     <div class="f1">
       <img src="<%= UserDetails[0].dp %>" class="br100p" alt="profile" />
     </div>
-    <div class="f4 f fdc rg10 ml20">
-      <h2 class="mtc"><i>@<%= UserDetails[0].username %></i></h2>
+    <div class="f4 f fdc rg10 ml20">  
+      <div class="f aic">
+        <h2 class="mtc">
+          <i>@<%= UserDetails[0].username %> </i>
+        </h2>
+        <p class="mtc ml10">(Views: <%= UserListings.reduce((sum, listing) => sum += listing.views, 0) %> )</p>
+      </div>
       <p class="mt mtc">
         🟢<i class="id"> User ID @<%= UserDetails[0]._id %></i>
       </p>
       <p class="mt mtc">
         🟢<i class="id"> Total Listings : <%= UserListings.length %></i>
       </p>
+      <% if(currUser && currUser._id.equals(UserDetails[0]._id)){ %>
+      <span class="mtc">
+        <a class="mtc edit" href="/user/<%= UserDetails[0].username%>"
+          >Manage Listings</a
+        >
+      </span>
+      <% } %>
     </div>
   </div>
 </div>

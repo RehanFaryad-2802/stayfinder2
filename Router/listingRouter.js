@@ -29,7 +29,7 @@ router.post(
     newListing.owner = req.user._id;
     newListing.save();
     req.flash("success", "New listing created!");
-    res.redirect("/listings");
+    res.redirect("/user/"+ req.user.username);
   })
 );
 
@@ -59,6 +59,8 @@ router.get(
         },
       })
       .populate("owner");
+    listing.views++;
+    listing.save();
     res.render("single_show.ejs", { listing });
   })
 );
@@ -85,7 +87,7 @@ router.put(
     let data = req.body;
     await Listing.findByIdAndUpdate(id, data);
     req.flash("success", "Listing updated!");
-    res.redirect(`/listings/${id}`);
+    res.redirect(`/user/${req.user.username}`);
   })
 );
 

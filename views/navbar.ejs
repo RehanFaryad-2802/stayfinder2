@@ -1,8 +1,8 @@
 <div class="container wbgc">
   <nav class="navbar">
-    <ul class="menu">
+    <ul class="menu f5 cg20">
       <li>
-        <a href="/"
+        <a href="/listings"
           ><img
             class="logo"
             src="https://cdn-icons-png.freepik.com/512/1724/1724634.png?uid=R153386611&ga=GA1.1.175742231.1736512338"
@@ -13,12 +13,16 @@
       <li><a href="/listings">Listings</a></li>
       <li><a href="/listings/new">Create</a></li>
     </ul>
-    <div class="user">
+    <div class="user f5">
       <ul class="f aic gap10">
-        <div class="user">
-          <ul class="f aic gap10">
+        <div class="f10">
+          <ul class="f aic jce gap10">
             <% if (currUser) { %>
-            <li><a href="/user/<%= currUser.username %>">Account</a></li>
+            <li class="f1">
+              <a href="/user/<%= currUser.username %>" class="logo"
+                ><img src="<%= currUser.dp %>" alt="logo"
+              /></a>
+            </li>
             <% } else { %>
             <li><a href="/login">Log In</a></li>
             <li><a href="/signup">Sign Up</a></li>

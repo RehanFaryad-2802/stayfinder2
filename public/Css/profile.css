@@ -41,7 +41,11 @@
 .profile-image {
   margin-bottom: 20px;
 } */
-
+.mini-container{
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
 .profile-banner {
   overflow: hidden;
   height: 200px;
@@ -53,4 +57,53 @@
 }
 .profile-banner .id{
   user-select: all;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th{
+  padding: 10px;
+}
+th, td {
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+tr{
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #333;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+td{
+  color: #555;
+  font-size: 0.9em;
+}
+th, td {
+  text-align: center;
+}
+
+td.nocenter {
+  text-align: left;
+  padding-left: 20px;
+}
+/* Image styles */
+table img {
+  margin: 0 auto;
+  max-width: 280px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  height: auto;
+  border-radius: 5px;
+  border: 2px solid #ddd;
+  padding: 5px;
 }

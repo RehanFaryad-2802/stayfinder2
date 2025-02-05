@@ -26,6 +26,115 @@
   </div>
 </div>
 <hr />
+<% if (UserListings.length != 0) { %>
+
+<div class="mini-container">
+  <h1 class="heading1">Latest Listing</h1>
+  <% let latestListing = UserListings[UserListings.length - 1] %>
+  <div class="f col-7 jcsb">
+    <div class="f4">
+      <div class="img grow">
+        <a href="/listings/<%= latestListing._id %>">
+          <img
+            src="<%= latestListing.image.url %>"
+            alt="<%= latestListing.title %>"
+          />
+        </a>
+      </div>
+    </div>
+    <div class="f6">
+      <div class="info">
+        <div class="title">
+          <h3 class="mtc"><%= latestListing.title %></h3>
+          <div class="box mt20">
+            <div class="f aic">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              <span class="ml10"><%= latestListing.views %></span>
+            </div>
+          </div>
+          <div class="box mt20">
+            <div class="f aic">
+              <span class="mr10">Rating</span>
+              <span>
+                <%= Math.round(latestListing.reviews.reduce((sum, rew)=> sum +=
+                rew.rating , 0 ) / latestListing.reviews.length || 0)%></span
+              >
+            </div>
+          </div>
+          <div class="box mt20">
+            <div class="f aic">
+              <span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="mr10"
+                >
+                  <path
+                    d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+                  />
+                  <circle cx="12" cy="10" r="3" /></svg
+              ></span>
+              <span>
+                <%= latestListing.location + " , " + latestListing.country
+                %></span
+              >
+            </div>
+          </div>
+          <div class="box mt20">
+            <div class="f aic">
+              <span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="mr10"
+                >
+                  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+                  <path d="M8 12h.01" />
+                  <path d="M12 12h.01" />
+                  <path d="M16 12h.01" /></svg
+              ></span>
+              <span>
+                <a class="wtc" href="/listings/<%= latestListing._id %>">
+                  <%= latestListing.reviews.length || 0 %>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <% if (!UserListings.length == 0) { %>
   <div class="f aic">
@@ -37,39 +146,57 @@
       <a href="/listings/new" class="btn">Create Listing</a>
     </div>
   </div>
-  <div class="all-listings col-10 jcc f fdc gapr10">
-    <% for (let i = UserListings.length - 1; i >= 0; i--) { %>
-      <div class="f10 f col-7 User-listings card-box jcsb">
-        <div class="img f2 grow">
-          <a href="/listings/<%= UserListings[i].id %>" class="block">
-          <img src="<%=UserListings[i].image.url%>" alt="" />
-        </a> 
-      </div>
-      <div class="f fdc jcse f8">
-        <h3 class="one-line"><%= UserListings[i].title %></h3>
-        <p class="two-line st"><%= UserListings[i].description %></p>
-        <p>
-          <span class="line-box">Rs.<%= UserListings[i].price %></span>
-          <span class="line-box"><%= UserListings[i].country %></span>
-        </p>
-        <div class="f aic delete-edit">
-          <form
-            action="/listings/<%= UserListings[i]._id %>?_method=DELETE"
-            method="post"
-          >
-            <div class="shake">
-              <button class="delete">Delete</button>
+  <div class="mini-container">
+    <table>
+      <tr>
+        <th>ListingDetails</th>
+        <th>Title</th>
+        <th>Views</th>
+        <th>Av.R</th>
+        <th>Description</th>
+        <th>Location</th>
+        <th>Country</th>
+      </tr>
+      <% for (let i = UserListings.length - 1; i >= 0; i--) { %>
+      <tr>
+        <td>
+          <a href="/listings/<%= UserListings[i]._id %>">
+            <img src="<%= UserListings[i].image.url%>" alt="image" />
+          </a>
+          <div class="f aic">
+            <form
+              class="f5"
+              action="/listings/<%= UserListings[i]._id %>?_method=DELETE"
+              method="post"
+            >
+              <div class="shake">
+                <button class="delete">Delete</button>
+              </div>
+            </form>
+            <div class="f5">
+              <a href="/listings/<%= UserListings[i]._id %>/edit" class="edit"
+                >Edit</a
+              >
             </div>
-          </form>
-          <a href="/listings/<%= UserListings[i]._id %>/edit" class="edit"
-            >Edit</a
-          >
-        </div>
-      </div>
-    </div>
-    <% } %>
+          </div>
+        </td>
+        <td><%= UserListings[i].title %></td>
+        <td><%= UserListings[i].views %></td>
+        <td>
+          <%= Math.round(UserListings[i].reviews. reduce((sum, review) => sum +=
+          review.rating, 0) / UserListings[i].reviews.length) || 0%>
+        </td>
+        <td class="nocenter"><%= UserListings[i].description %></td>
+        <td><%= UserListings[i].location %></td>
+        <td><%= UserListings[i].country %></td>
+      </tr>
+      <% } %>
+    </table>
   </div>
   <% }else{ %>
   <h1 class="heading1">No Listings Created!</h1>
   <% } %>
 </div>
+<% }else{ %>
+<h1 class="heading1">No Listings Created!</h1>
+<% } %>
