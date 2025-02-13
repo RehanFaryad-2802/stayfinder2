@@ -26,6 +26,10 @@
 .container {
   padding: 10px;
 }
+.oneByone{
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
 
 .green {
   color: green;

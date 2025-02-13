@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="../../../public/Css/admin.css">
+    <link rel="stylesheet" href="./Css/admin.css">
 </head>
 <body>
     <div class="dashboard-container">
@@ -51,7 +51,6 @@
                     <div class="review-card">
                         <p><strong>Rating:</strong> <%= review.rating %>/5</p>
                         <p><strong>Comment:</strong> <%= review.comment %></p>
-                        <p><strong>Author:</strong> <%= review.author.email %></p>
                         <p><strong>Date:</strong> <%= review.createdAt.toLocaleDateString() %></p>
                     </div>
                 <% }) %>
@@ -64,7 +63,9 @@
             <div class="users-list">
                 <% users.forEach(user => { %>
                     <div class="user-card">
-                        <img src="<%= user.dp %>" alt="<%= user.email %>">
+                        <div class="img">
+                            <img src="<%= user.dp %>" class="oneByone" alt="<%= user.email %>">
+                        </div>
                         <p><strong>Email:</strong> <%= user.email %></p>
                     </div>
                 <% }) %>

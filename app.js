@@ -83,13 +83,20 @@ app.use("/listings/:id/review", ReviewRoute);
 app.use("/", userRoute);
 
 app.get("/admin", isLogin, async (req, res) => {
-  if(req.user.username == "hami"){
+  if (req.user.username == "hamizuseAdmin") {
     let users = await User.find({}),
-      listings = await Listing.find({}),
+      listings = await Listing.find({})
+        .populate({
+          path: "reviews",
+          populate: {
+            path: "author",
+          },
+        })
+        .populate("owner"),
       reviews = await Review.find({});
     res.render("./user/admin/admin.ejs", { users, listings, reviews });
-  }else{
-    res.redirect('/user/account')
+  } else {
+    res.redirect("/user/account");
   }
 });
 
