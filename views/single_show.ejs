@@ -1,6 +1,6 @@
 <%- layout("boilerplate") %>
 <div class="wrapper f fdc">
-  <div class="row f col-4 jcsb">
+  <div class="row f col-2 jcsb">
     <div class="img grow-blur f0">
       <img src="<%= listing.image.url %>" alt="image" />
     </div>
@@ -99,7 +99,7 @@
   <h1 class="heading1">People Reviews</h1>
   <div class="allReviews f">
     <% for (let i = listing.reviews.length - 1; i >= 0; i--) { %>
-    <div class="f cg20 aic f10 Showreview">
+    <div class="f cg10 aic f10 Showreview">
       <div class="f1">
         <div class="avature">
           <img
@@ -109,7 +109,7 @@
           />
         </div>
       </div>
-      <div class="f9">
+      <div class="f8">
         <div class="name">
           <h4><i>@<%= listing.reviews[i].author.username %></i></h4>
         </div>

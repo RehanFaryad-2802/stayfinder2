@@ -28,7 +28,7 @@
 
 <!-- content -->
 <h1 class="heading1">Listing Details</h1>
-<form action="/listings/new" id="NewForm" method="post">
+<form action="/listings/new" id="NewForm" method="post" enctype="multipart/form-data">
   <div class="input-area">
     <label for="title" class="form-label">Title</label>
     <input
@@ -56,15 +56,15 @@
     <h4 class="errmsg dn">Description is required</h4>
   </div>
   <div class="input-area">
-    <label for="ImageUrl" class="form-label">Image Url</label>
+    <label for="ImageUrl" class="form-label">Upload Image</label>
     <input
-      type="text"
+      type="file"
       autocomplete="on"
       class="form-control img"
       name="image[url]"
       id="ImageUrl"
     />
-    <h4 class="errmsg dn">Enter Valid Url</h4>
+    <h4 class="errmsg dn">Enter Valid image</h4>
   </div>
 
   <div class="input-area f jcsb">

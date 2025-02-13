@@ -7,15 +7,19 @@ const methodOverride = require("method-override");
 const app = express();
 
 // Flash message
-const session = require("express-session");
 const flash = require("connect-flash");
 
 // my data
 const Listing = require("./models/listing.js");
+const Review = require("./models/reviews.js");
+const User = require("./models/user.js");
+
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressErrors.js");
+const { isLogin } = require("./middleware.js");
 
 // routes
+
 const userRoute = require("./Router/userRouter.js");
 const listingsRoute = require("./Router/listingRouter.js");
 const ReviewRoute = require("./Router/reviews.js");
@@ -30,7 +34,6 @@ app.set("views", path.join(__dirname, "views"));
 // passport setup
 const passport = require("passport");
 const localStrategy = require("passport-local");
-const User = require("./models/user.js");
 
 app.use(
   require("express-session")({
@@ -41,7 +44,6 @@ app.use(
   })
 );
 app.use(flash());
-
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
@@ -58,7 +60,7 @@ async function main() {
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser()); 
+passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
@@ -79,6 +81,17 @@ app.get(
 app.use("/listings", listingsRoute);
 app.use("/listings/:id/review", ReviewRoute);
 app.use("/", userRoute);
+
+app.get("/admin", isLogin, async (req, res) => {
+  if(req.user.username == "hami"){
+    let users = await User.find({}),
+      listings = await Listing.find({}),
+      reviews = await Review.find({});
+    res.render("./user/admin/admin.ejs", { users, listings, reviews });
+  }else{
+    res.redirect('/user/account')
+  }
+});
 
 app.all("*", async (req, res, next) => {
   next(new ExpressError(404, "Page Not Found"));

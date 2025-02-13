@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../../../public/Css/admin.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Admin Dashboard</h1>
+
+        <!-- Statistics Section -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3>Total Listings</h3>
+                <p><%= listings.length %></p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Reviews</h3>
+                <p><%= reviews.length %></p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Users</h3>
+                <p><%= users.length %></p>
+            </div>
+        </div>
+
+        <!-- Listings Section -->
+        <div class="listings-section">
+            <h2>Listings</h2>
+            <div class="listings-grid">
+                <% listings.forEach(listing => { %>
+                    <div class="listing-card">
+                        <img src="<%= listing.image.url %>" alt="<%= listing.title %>">
+                        <h4><%= listing.title %></h4>
+                        <p><strong>Price:</strong> $<%= listing.price %></p>
+                        <p><strong>Location:</strong> <%= listing.location %>, <%= listing.country %></p>
+                        <p><strong>Views:</strong> <%= listing.views %></p>
+                        <p><strong>Owner:</strong> <%= listing.owner.email %></p>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="reviews-section">
+            <h2>Recent Reviews</h2>
+            <div class="reviews-list">
+                <% reviews.forEach(review => { %>
+                    <div class="review-card">
+                        <p><strong>Rating:</strong> <%= review.rating %>/5</p>
+                        <p><strong>Comment:</strong> <%= review.comment %></p>
+                        <p><strong>Author:</strong> <%= review.author.email %></p>
+                        <p><strong>Date:</strong> <%= review.createdAt.toLocaleDateString() %></p>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+
+        <!-- Users Section -->
+        <div class="users-section">
+            <h2>Users</h2>
+            <div class="users-list">
+                <% users.forEach(user => { %>
+                    <div class="user-card">
+                        <img src="<%= user.dp %>" alt="<%= user.email %>">
+                        <p><strong>Email:</strong> <%= user.email %></p>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

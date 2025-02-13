@@ -47,12 +47,13 @@
     <div class="card-box max f1">
       <div class="row">
         <div class="col-md-3">
-          <a
-            href="/listings/<%= UserListings[i]._id %>"
-            class="card f fdc jcsb"
-          >
-            <div class="img">
+          <div class="img grow">
+              <a
+              href="/listings/<%= UserListings[i]._id %>"
+                class="card f fdc jcsb"
+              >
               <img src="<%= UserListings[i].image.url %>" alt="image" />
+            </a>
             </div>
             <div class="card-body f fdc jcsb">
               <h3 class="one-line"><%= UserListings[i].title %></h3>
@@ -62,7 +63,6 @@
                 <span class="line-box"><%= UserListings[i].country %></span>
               </p>
             </div>
-          </a>
         </div>
       </div>
     </div>

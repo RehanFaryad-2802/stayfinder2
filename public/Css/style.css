@@ -23,6 +23,9 @@
   --border-radius: 0.25rem;
   --transition: all 0.5s ease;
 }
+.container {
+  padding: 10px;
+}
 
 .green {
   color: green;

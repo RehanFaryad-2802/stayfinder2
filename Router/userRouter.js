@@ -5,6 +5,7 @@ const User = require("../models/user.js");
 const wrapAsync = require("../utils/wrapAsync");
 const { saveReturnTo, isLogin } = require("../middleware.js");
 const Listing = require("../models/listing.js");
+const ExpressError = require("../utils/ExpressErrors.js");
 
 router.route("/logout").get((req, res, next) => {
   req.logout((err) => {
@@ -63,26 +64,26 @@ router
     }
   );
 
-router.route("/user/:userName").get(isLogin, async (req, res) => {
-  let { userName } = req.params;
-  if (userName !== req.user.username) {
-    req.flash("error", "User Not Found");
-    return res.redirect("/listings");
-  }
-  let UserListings = await Listing.find({ owner: req.user._id }).populate({
-    path: "reviews",
-    populate: {
-      path: "author",
-    },
-  })
-  .populate("owner");;
+router.route("/user/account").get(isLogin, async (req, res) => {
+  let UserListings = await Listing.find({ owner: req.user._id })
+    .populate({
+      path: "reviews",
+      populate: {
+        path: "author",
+      },
+    })
+    .populate("owner");
   res.render("../views/user/profile.ejs", { UserListings });
 });
 
 router.route("/user/profile/:user").get(async (req, res) => {
   let { user } = req.params;
   let UserDetails = await User.find({ username: user });
-  let UserListings = await Listing.find({ owner: UserDetails[0]._id })
-  res.render("../views/user/channel.ejs", { UserListings, UserDetails });
+  if (UserDetails.length == 0) {
+    res.render("../views/error.ejs", {statusCode: 404, message: `The user "@${user}" does not exist!`});
+  } else {
+    let UserListings = await Listing.find({ owner: UserDetails[0]._id });
+    res.render("../views/user/channel.ejs", { UserListings, UserDetails });
+  }
 });
 module.exports = router;
