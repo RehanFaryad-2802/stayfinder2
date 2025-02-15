@@ -11,21 +11,34 @@
       />
     </div>
   </div>
-  <div class="f nowrap user-info br20 aic mt20">
-    <div class="f1">
+  <div class="f nowrap col-4 user-info br20 aic mt20">
+    <div class="dp-box">
       <img src="<%= currUser.dp %>" class="br100p oneByone" alt="profile" />
     </div>
-    <div class="f8 f fdc rg10 ml20">
-      <h2 class="mtc"><i>@<%= currUser.username %></i></h2>
-      <p class="mt mtc">🟢<i class="id"> User ID @<%= currUser._id %></i></p>
-      <p class="mt mtc">
-        🟢<i class="id"> Listings : <%= UserListings.length %></i>
+    <div class="stat-card">
+      <h3>User</h3>
+      <div class="flex">
+        <p>@<%= currUser.username %></p>
+        <div class="shake">
+          <div class="a">
+            <a href="/logout" class="delete">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <h3>Total Listings</h3>
+      <p><%= UserListings.length %></p>
+    </div>
+    <div class="stat-card">
+      <h3>Total Views</h3>
+      <p>
+        <%= UserListings.reduce((sum, listing) => sum += listing.views, 0) %>
       </p>
-      <a href="/logout" class="edit">Logout</a>
     </div>
   </div>
 </div>
-<hr />
+<hr class="mt20 mb20" />
 <% if (UserListings.length != 0) { %>
 
 <div class="mini-container">
@@ -33,12 +46,14 @@
   <% let latestListing = UserListings[UserListings.length - 1] %>
   <div class="f col-2 jcsb">
     <div class="f4">
-      <div class="img grow">
-        <a href="/listings/<%= latestListing._id %>">
-          <img
+      <div class="img hidden">
+        <a class="wave grow" href="/listings/<%= latestListing._id %>">
+          <div class="pointer">  
+            <img
             src="<%= latestListing.image.url %>"
             alt="<%= latestListing.title %>"
-          />
+            />
+          </div>
         </a>
       </div>
     </div>

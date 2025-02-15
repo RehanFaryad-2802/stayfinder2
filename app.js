@@ -93,7 +93,7 @@ app.get("/admin", isLogin, async (req, res) => {
           },
         })
         .populate("owner"),
-      reviews = await Review.find({});
+      reviews = await Review.find({}).populate("author");
     res.render("./user/admin/admin.ejs", { users, listings, reviews });
   } else {
     res.redirect("/user/account");

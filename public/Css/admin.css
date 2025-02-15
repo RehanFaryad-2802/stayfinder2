@@ -7,15 +7,6 @@
     border-radius: 8px;
 }
 
-h1, h2, h3, h4 {
-    color: #333;
-}
-
-.stats-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-}
 
 .stat-card {
     background-color: #f9f9f9;

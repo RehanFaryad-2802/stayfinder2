@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="./Css/admin.css">
+    <link rel="stylesheet" href="https://rfglobalcss.netlify.app/documents/global.css">
 </head>
 <body>
     <div class="dashboard-container">
         <h1>Admin Dashboard</h1>
-
-        <!-- Statistics Section -->
-        <div class="stats-container">
+        <div class="f jcsb mt20 mb20">
             <div class="stat-card">
                 <h3>Total Listings</h3>
                 <p><%= listings.length %></p>
@@ -50,6 +49,7 @@
                 <% reviews.forEach(review => { %>
                     <div class="review-card">
                         <p><strong>Rating:</strong> <%= review.rating %>/5</p>
+                        <p><strong>Date:</strong> <%= review.author.username %></p>
                         <p><strong>Comment:</strong> <%= review.comment %></p>
                         <p><strong>Date:</strong> <%= review.createdAt.toLocaleDateString() %></p>
                     </div>
@@ -64,7 +64,7 @@
                 <% users.forEach(user => { %>
                     <div class="user-card">
                         <div class="img">
-                            <img src="<%= user.dp %>" class="oneByone" alt="<%= user.email %>">
+                            <img src="<%= user.dp %>" class="oneByone auto" alt="<%= user.email %>">
                         </div>
                         <p><strong>Email:</strong> <%= user.email %></p>
                     </div>

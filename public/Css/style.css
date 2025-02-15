@@ -3,6 +3,7 @@
 @import url("./Form.css");
 @import url("./media.css");
 @import url("./profile.css");
+@import url("./admin.css");
 :root {
   --btn-color: #00a8fc;
   --container-size: 1300px;
@@ -30,7 +31,12 @@
   aspect-ratio: 1/1;
   object-fit: cover;
 }
-
+.hidden{
+  overflow: hidden;
+}
+.dp-box{
+  flex: 0 0 8% !important;
+}
 .green {
   color: green;
 }
