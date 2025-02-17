@@ -145,3 +145,27 @@ textarea {
   background-color: #ffffff;
   box-shadow: inset 0 0px 5px rgba(0, 0, 0, 0.48);
 }
+
+.file-input {
+  /* Style the input container */
+  font-size: 16px;
+  border: 2px solid #007bff;
+  background-color: #f9f9f9;
+  padding: 0px;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Style the button part of the file input */
+.file-input::file-selector-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.file-input::file-selector-button:hover {
+  background-color: #0056b3;
+}

@@ -1,5 +1,5 @@
 <div class="container wbgc">
-  <nav class="navbar">
+  <nav class="navbar f aic jcsb">
     <ul class="menu f5 cg20">
       <li>
         <a href="/listings"
@@ -13,22 +13,28 @@
       <li><a href="/listings">Listings</a></li>
       <li><a href="/listings/new">Create</a></li>
     </ul>
-    <div class="user f5">
-      <ul class="f aic gap10">
-        <div class="f10">
-          <ul class="f aic jce gap10">
-            <% if (currUser) { %>
-            <li class="f1">
-              <a href="/user/account" class="logo"
-                ><img class="br100p oneByone" src="<%= currUser.dp %>" alt="user-dp"
-              /></a>
-            </li>
-            <% } else { %>
-            <li><a href="/login">Log In</a></li>
-            <li><a href="/signup">Sign Up</a></li>
-            <% } %>
-          </ul>
-        </div>
+    <div class="user f4">
+      <ul class="f aic jce gap10">
+        <% if (currUser) { %>
+        <li class="f1 dropdown">
+          <a href="#" class="logo"
+            ><img
+              class="br100p oneByone"
+              src="<%= currUser.dp %>"
+              alt="user-dp"
+          /></a>
+          <div class="dropdown-menu left">
+            <ol>
+              <li class="text mt5"><a href="/user/account">Account</a></li>
+              <li class="text mt5"><a href="/user/profile/<%= currUser.username %>">Channel</a></li>
+              <li class="text mt5"><a href="/logout">Logout</a></li>
+            </ol>
+          </div>
+        </li>
+        <% } else { %>
+        <li><a href="/login">Log In</a></li>
+        <li><a href="/signup">Sign Up</a></li>
+        <% } %>
       </ul>
     </div>
   </nav>

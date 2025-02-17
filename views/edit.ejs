@@ -7,6 +7,7 @@
   action="/listings/<%= listing._id %>/edit?_method=PUT"
   id="NewForm"
   method="post"
+  enctype="multipart/form-data"
 >
   <div class="input-area">
     <label for="title" class="form-label">Title</label>
@@ -23,23 +24,31 @@
   <div class="input-area">
     <label for="Description" class="form-label">Description</label>
     <textarea
-      rows="9"
+      rows="5"
       name="description"
       type="text"
       class="form-control description"
       id="Description"
     >
-    <%= listing.description %></textarea
+    <%= listing.description.trim() %></textarea
     >
     <h4 class="errmsg dn">Description is required</h4>
   </div>
   <div class="input-area">
+    <label for="ImageUrl" class="form-label">Previoues Image</label>    
+    <div class="img f col-2">
+      <div class="img">
+        <img src="<%= listing.image.url %>" alt="Preview" />
+      </div>
+    </div>
+  </div>
+  <div class="input-area">
     <label for="ImageUrl" class="form-label">Image Url</label>
     <input
-      type="text"
-      class="form-control img"
+      type="file"
+      accept="image/png, image/jpeg, image/jpg"
+      class="img file-input"
       name="image[url]"
-      value="<%= listing.image.url %>"
       id="ImageUrl"
     />
     <h4 class="errmsg dn">Enter Valid Url</h4>

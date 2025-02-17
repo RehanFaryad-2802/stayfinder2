@@ -1,5 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+
+const { storage } = require("../cloudConfig.js");
+const upload = multer({ storage });
 
 const Listing = require("../models/listing.js");
 const wrapAsync = require("../utils/wrapAsync.js");
@@ -22,14 +26,18 @@ router.get("/new", isLogin, (req, res) => {
 router.post(
   "/new",
   isLogin,
+  upload.single("image[url]"),
   validateListing,
   wrapAsync(async (req, res) => {
     let data = req.body;
+    let filename = req.file.filename;
+    let url = req.file.path;
     const newListing = await Listing.create(data);
     newListing.owner = req.user._id;
+    newListing.image = { url, filename };
     newListing.save();
     req.flash("success", "New listing created!");
-    res.redirect("/user/"+ req.user.username);
+    res.redirect("/user/account");
   })
 );
 
@@ -42,7 +50,7 @@ router.delete(
     let { id } = req.params;
     await Listing.findByIdAndDelete(id);
     req.flash("error", "Listing deleted!");
-    res.redirect("/user/" + req.user.username);
+    res.redirect("/user/account");
   })
 );
 
@@ -81,13 +89,20 @@ router.put(
   "/:id/edit",
   isLogin,
   isOwner,
+  upload.single("image[url]"),
   validateListing,
   wrapAsync(async (req, res, next) => {
     let { id } = req.params;
-    let data = req.body;
-    await Listing.findByIdAndUpdate(id, data);
+    let listing = await Listing.findByIdAndUpdate(id, { ...req.body });
+    if (typeof req.file !== "undefined") {
+      // res.send(`${req.file} , ${listing}`);
+      let url = req.file.path;
+      let filename = req.file.filename;
+      listing.image = { url, filename };
+      await listing.save();
+    }
     req.flash("success", "Listing updated!");
-    res.redirect(`/user/${req.user.username}`);
+    res.redirect(`/user/account`);
   })
 );
 

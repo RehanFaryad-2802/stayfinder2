@@ -23,6 +23,16 @@
   --border-color: #e3e3e3;
   --border-radius: 0.25rem;
   --transition: all 0.5s ease;
+  --f1: 0 0 10%;
+  --f2: 0 0 20%;
+  --f3: 0 0 30%;
+  --f4: 0 0 40%;
+  --f5: 0 0 50%;
+  --f6: 0 0 60%;
+  --f7: 0 0 70%;
+  --f8: 0 0 80%;
+  --f9: 0 0 90%;
+  --f10: 0 0 100%;
 }
 .container {
   padding: 10px;
