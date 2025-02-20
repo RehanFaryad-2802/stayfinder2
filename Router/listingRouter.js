@@ -16,7 +16,7 @@ router.get(
     if(req.user){
       res.render("listings.ejs", { listings });
     }else{
-      res.redirect("/listings/");
+      res.render("/home.ejs", { listings });
     }
   })
 );
