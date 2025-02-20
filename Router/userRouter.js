@@ -13,7 +13,7 @@ router.route("/logout").get((req, res, next) => {
       return next(err);
     } else {
       req.flash("success", "successfully logged out!");
-      res.redirect("/listings");
+      res.redirect("/");
     }
   });
 });
