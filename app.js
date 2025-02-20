@@ -1,14 +1,15 @@
 // pakages
-if(process.env.NODE_ENV !== "production"){
+if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
-console.log(process.env.CLOUD_NAME)
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
 const app = express();
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
 
 // Flash message
 const flash = require("connect-flash");
@@ -39,9 +40,19 @@ app.set("views", path.join(__dirname, "views"));
 const passport = require("passport");
 const localStrategy = require("passport-local");
 
+const dbUrl = process.env.Mongodb_Link;
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  cripto: { secret: process.env.SECRET_SESSON_KEY },
+  touchAfter: 24 * 60 * 60,
+});
+store.on("error", function (e) {
+  console.log("Session store error" -- +e);
+})
 app.use(
   require("express-session")({
-    secret: "secret",
+    store: store,
+    secret: process.env.SECRET_SESSON_KEY,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false },
@@ -49,7 +60,7 @@ app.use(
 );
 app.use(flash());
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
 main()
   .then(() => {
@@ -57,7 +68,7 @@ main()
   })
   .catch((err) => console.log(err));
 async function main() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(dbUrl);
 }
 
 // passport config
@@ -78,8 +89,11 @@ app.get(
   "/",
   wrapAsync(async (req, res) => {
     const listings = await Listing.find({});
-
-    res.render("home.ejs", { listings });
+    if (req.user) {
+      res.redirect("/listings");
+    } else {
+      res.render("home.ejs", { listings });
+    }
   })
 );
 app.use("/listings", listingsRoute);

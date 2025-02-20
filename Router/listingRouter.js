@@ -13,7 +13,11 @@ router.get(
   "/",
   wrapAsync(async (req, res, next) => {
     const listings = await Listing.find({});
-    res.render("listings.ejs", { listings });
+    if(req.user){
+      res.render("listings.ejs", { listings });
+    }else{
+      res.redirect("/listings/");
+    }
   })
 );
 
