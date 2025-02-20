@@ -51,7 +51,7 @@ store.on("error", function (e) {
 })
 app.use(
   require("express-session")({
-    store: store,
+    store,
     secret: process.env.SECRET_SESSON_KEY,
     resave: false,
     saveUninitialized: true,
