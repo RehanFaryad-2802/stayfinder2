@@ -16,7 +16,8 @@ router.get(
     if(req.user){
       res.render("listings.ejs", { listings });
     }else{
-      res.render("home.ejs", { listings });
+      req.flash("error", "You must be logged in!");
+      res.render("login.ejs");
     }
   })
 );
