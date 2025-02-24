@@ -101,7 +101,7 @@ app.use("/listings/:id/review", ReviewRoute);
 app.use("/", userRoute);
 
 app.get("/admin", isLogin, async (req, res) => {
-  if (req.user.username == "hamizuseAdmin") {
+  if (req.user.username == "Adminhami") {
     let users = await User.find({}),
       listings = await Listing.find({})
         .populate({
